@@ -1,30 +1,25 @@
 import React from 'react'
-// import { Link } from 'react-dom-router';
+import {Link} from "react-router-dom";
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow">
             <div className="container-fluid">
-                {/* <a className="navbar-brand" href="#">Navbar</a> */}
-                <h4 className="navbar-brand">KUKU</h4>
+                <Link className="navbar-brand d-flex fw-bold fs-4" to="/"><i class="bi bi-house-fill fa-1x "></i><h4 className="m-1 ">KUKU</h4></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
-                            <h4 className="nav-link">Chicken</h4>
+                        <li className="nav-item fw-bold fs-4">
+                            <Link className="nav-link btn-success" to="/chicken">Chicken</Link>
                         </li>
-                        <li className="nav-item">
-                            {/* <a className="nav-link" href="#">Features</a> */}
-                            <h4 className="nav-link">Chicks</h4>
+                        <li className="nav-item fw-bold fs-4">
+                            <Link className="nav-link btn-success" to="/chicks">Chicks</Link>
                         </li>
-                        <li className="nav-item">
-                            {/* <a className="nav-link" href="#">Pricing</a> */}
+                        <li className="nav-item fw-bold fs-4">
+                            <Link className="nav-link btn-success" to="/eggs">Eggs</Link>
                         </li>
-                        <h4 className="nav-link">Eggs</h4>
-                
                     </ul>
                 </div>
             </div>
