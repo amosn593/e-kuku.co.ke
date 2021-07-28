@@ -1,27 +1,24 @@
-import React from 'react'
 
-function Post() {
+function Post(props) {
     return (
-        <div className="row m-2">
+        
         <div className="col-md-3">
             <div className="card text-center shadow">
                 <div className="card-header text-muted d-flex justify-content-between">
-                    <i class="fa fa-map-marker" aria-hidden="true">KITUI</i>
-                    <i class="fa fa-map-marker" aria-hidden="true">Ikutha</i>
+                    <i className="fa fa-map-marker" aria-hidden="true"><span className="mx-1">{props.get_county}</span></i>
+                    <i className="fa fa-map-marker" aria-hidden="true"><span className="mx-1">{props.get_subcounty}</span></i>
                 </div>
+                <img src={props.get_thumbnail} className="card-img-top" alt="..."></img>
                 <div className="card-body">
-                    <h6 className="card-title">Kienyeji Eggs</h6>
-                    <p className="card-text">Price: Negotiable</p>
-                    <div>
-                        <button className="btn btn-dark">View</button>    
-                    </div>
+                    <p className="card-title">{props.title}</p>
+                    <p className="card-text">Price: {props.price}</p>
+                    <button className="btn btn-dark mx-1 ">View Details</button>
                 </div>
                 <div className="card-footer text-muted">
-                    1 May, 2021
+                    {props.date_posted}
                 </div>
             </div>
-        </div>
-    </div>        
+        </div>        
 
     )
 }

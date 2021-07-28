@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Post from './Post';
+import { axios } from '../inc/axios';
 
-function Chicken() {
+function Egg() {
+    const [posts, setPosts] = useState([]);
+
+    const noPosts = !posts || (posts && posts.length === 0);
+
+    const getPosts = async() => {
+        const response = await axios.get("/poultrychicken").catch((err) => console.log(err));
+        if (response && response.data) setPosts(response.data);
+
+    };
+
+    useEffect(() => {
+        getPosts();
+    }, []);
     return (
-        <div >
-            <h1>Chicken</h1>
+        <div className = "row m-2" > {!noPosts && posts.map((post) =>
+                <
+                Post key = { post.id } {...post }
+                />
+            )
+        }
+
         </div>
-    )
+    );
 }
 
-export default Chicken
+export default Egg
