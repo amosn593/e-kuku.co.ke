@@ -3,3 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.mycardbody {
+    height: 110px !important;
+}
+
+.mycardimg {
+    height: 150px !important;
+}
