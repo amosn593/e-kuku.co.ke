@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
 function Post(props) {
     return (
         
-        <div className="col-md-3">
-            <div className="card text-center shadow">
+        <div className="col-md-3 mt-3">
+            <div className="card text-center shadow mycard">
                 <div className="card-header text-muted d-flex justify-content-between">
                     <i className="fa fa-map-marker" aria-hidden="true"><span className="mx-2">{props.get_county}</span></i>
                     <i className="fa fa-map-marker" aria-hidden="true"><span className="mx-2">{props.get_subcounty}</span></i>
@@ -12,7 +13,7 @@ function Post(props) {
                 <div className="card-body mycardbody">
                     <p className="card-title m-0">{props.title}</p>
                     <p className="card-text m-0">Price: {props.price}</p>
-                    <button className="btn btn-dark m-0 ">View Details</button>
+                    <Link className="btn btn-dark m-0 " to = {`/product/${props.id}`}>View Details</Link>
                 </div>
                 <div className="card-footer text-muted">
                     {props.date_posted}
