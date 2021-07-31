@@ -16,16 +16,21 @@ function Egg() {
     useEffect(() => {
         getPosts();
     }, []);
-    return (
-        <div className = "row m-2" > {!noPosts && posts.map((post) =>
-                <
-                Post key = { post.id } {...post }
-                />
-            )
-        }
-
+    if (!noPosts) {
+      return (
+        <div className="row m-2">
+          {posts.map((post) => (
+            <Post key={post.id} {...post} />
+          ))}
         </div>
-    );
+      );
+    } else {
+      return (
+        <h2 className="text-muted text-center mt-4">
+          No Products Found, try again later
+        </h2>
+      );
+    }
 }
 
 export default Egg
