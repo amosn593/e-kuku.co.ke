@@ -1,25 +1,36 @@
 * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 body {
-    background-color: #EEF2F4 !important;
+  background-color: #eef2f4 !important;
 }
 
 .mycardbody {
-    height: 110px !important;
+  height: 110px !important;
 }
 
 .mycardimg {
-    height: 150px !important;
+  height: 150px !important;
 }
 
 .mycard {
-    transition: transform .2s !important;
+  transition: transform 0.2s !important;
 }
 
 .mycard:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.myimagepreview {
+  width: 50%;
+  margin: auto;
+  height: 150px;
+  background-color: #eef2f4;
 }
