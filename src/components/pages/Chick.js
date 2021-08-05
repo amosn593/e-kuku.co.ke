@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
+import NoPosts from "../inc/NoPosts";
 
 function Egg() {
   const [posts, setPosts] = useState([]);
@@ -13,14 +14,16 @@ function Egg() {
     const response = await axios
       .get("/poultrychicks")
       .catch((err) => console.log(err));
-    if (response && response.data) setPosts(response.data);
-    setLoading(true);
+    if (response && response.data) {
+      setPosts(response.data);
+      setLoading(true);
+    }
   };
 
   useEffect(() => {
     getPosts();
   }, []);
-  
+
   if (loading) {
     if (!noPosts) {
       return (
@@ -32,14 +35,12 @@ function Egg() {
       );
     } else {
       return (
-        <h2 className="text-muted text-center mt-4">
-          No Products Found, try again later
-        </h2>
+        <NoPosts/>
       );
     }
   } else {
     return <Spinner />;
-  };
+  }
 }
 
 export default Egg;

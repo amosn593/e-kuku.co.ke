@@ -65,7 +65,7 @@ function Navbar() {
               <div className="btn-group">
                 <button
                   type="button"
-                  class="btn btn-success dropdown-toggle nav-item fs-4"
+                  className="btn btn-success dropdown-toggle nav-item fs-4"
                   data-bs-toggle="dropdown"
                   data-bs-display="static"
                   aria-expanded="false"

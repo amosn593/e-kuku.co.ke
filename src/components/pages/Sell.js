@@ -47,9 +47,10 @@ function Sell() {
     setPicture(URL.createObjectURL(e.target.files[0]));
   };
 
+  let form_data = new FormData();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let form_data = new FormData();
     form_data.append("title", e.target.title.value);
     const data = {
       county: parseInt(e.target.county.value),
