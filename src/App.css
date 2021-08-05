@@ -10,6 +10,7 @@ html {
 
 body {
   background-color: #eef2f4 !important;
+  min-height: 100vh !important;
 }
 
 .mycardbody {
@@ -28,9 +29,21 @@ body {
   transform: scale(1.05);
 }
 
-.myimagepreview {
-  width: 50%;
+.myimagepreview img {
+  width: 100%;
   margin: auto;
-  height: 150px;
+  height: 200px;
   background-color: #eef2f4;
+  box-sizing: border-box;
+}
+
+.mynotfound {
+  text-align: center;
+  padding-top: 25px;
+  color: red;
+}
+
+.myfooter {
+  margin-bottom: 0px;
+  bottom: 0;
 }
