@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow ">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar">
       <div className="container-fluid">
-        <Link className="navbar-brand d-flex fw-bold fs-4" to="/">
+        <Link className="navbar-brand d-flex" to="/">
           <h4 className="m-1 ">ProfitablePoultry</h4>
         </Link>
         <button
@@ -21,7 +21,7 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item fs-4">
+            <li className="nav-item fs-5">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/eggs"
@@ -29,7 +29,7 @@ function Navbar() {
                 Eggs
               </Link>
             </li>
-            <li className="nav-item fs-4">
+            <li className="nav-item fs-5">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicks"
@@ -37,7 +37,7 @@ function Navbar() {
                 Chicks
               </Link>
             </li>
-            <li className="nav-item fs-4">
+            <li className="nav-item fs-5">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicken"
@@ -45,7 +45,7 @@ function Navbar() {
                 Chicken
               </Link>
             </li>
-            <li className="nav-item fs-4">
+            <li className="nav-item fs-5">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicken_feeds"
@@ -53,7 +53,7 @@ function Navbar() {
                 Chicken Feeds
               </Link>
             </li>
-            <li className="nav-item fs-4">
+            <li className="nav-item fs-5">
               <Link
                 className="nav-link btn-warning text-white  rounded-pill text-center mx-1"
                 to="/sell"
@@ -61,11 +61,11 @@ function Navbar() {
                 SELL
               </Link>
             </li>
-            <li className="nav-item fs-4">
+            <li className="nav-item fs-5">
               <div className="btn-group">
                 <button
                   type="button"
-                  className="btn btn-success dropdown-toggle nav-item fs-4"
+                  className="btn btn-success dropdown-toggle nav-item fs-5 text-center"
                   data-bs-toggle="dropdown"
                   data-bs-display="static"
                   aria-expanded="false"

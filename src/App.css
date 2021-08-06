@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
 * {
   padding: 0px;
   margin: 0px;
@@ -11,6 +14,11 @@ html {
 body {
   background-color: #eef2f4 !important;
   min-height: 100vh !important;
+  font-family: "Playfair", Arial, Helvetica, sans-serif !important;
+}
+
+.mynavbar {
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 .mycardbody {
@@ -35,6 +43,7 @@ body {
   height: 200px;
   background-color: #eef2f4;
   box-sizing: border-box;
+  border: none;
 }
 
 .mynotfound {
@@ -45,5 +54,6 @@ body {
 
 .myfooter {
   margin-bottom: 0px;
-  bottom: 0;
+  bottom: 0px;
+  margin-bottom: -100px;
 }

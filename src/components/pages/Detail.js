@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 function Detail() {
   const [post, setPost] = useState([]);
 
-  const noPost = !post || (post && post.length === 0);
+  // const noPost = !post || (post && post.length === 0);
 
   const { id } = useParams();
 
@@ -14,14 +14,14 @@ function Detail() {
       .post(`/poultryview/${id}`)
       .catch((err) => console.log(err));
 
-    console.log(response);
+    // console.log(response);
   };
 
   const getPost = async () => {
     const response = await axios
       .get(`/poultrydetail/${id}`)
       .catch((err) => console.log(err));
-    if (response && response.data) setPost(response.data);
+    if (response && response.data) {setPost(response.data)};
   };
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function Detail() {
     getPost();
   }, []);
 
-  console.log(post);
+  // console.log(post);
 
   return (
     <div className="container mt-3">

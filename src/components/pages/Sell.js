@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { axios } from "../inc/axios";
+import swal from "sweetalert";
 
 function Sell() {
   const [picture, setPicture] = useState(null);
+  const [imageurl, setImageurl] = useState(null);
   const [counties, setCounties] = useState([]);
   const [subcounties, setSubcounties] = useState([]);
   const [categories, setCategories] = useState([]);
+
+  const history = useHistory();
 
   const getcounties = async () => {
     const response = await axios
@@ -44,30 +49,28 @@ function Sell() {
   }, []);
 
   const onChangePicture = (e) => {
-    setPicture(URL.createObjectURL(e.target.files[0]));
+    setPicture(e.target.files[0]);
+    setImageurl(URL.createObjectURL(e.target.files[0]));
   };
-
-  let form_data = new FormData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    form_data.append("title", e.target.title.value);
-    const data = {
-      county: parseInt(e.target.county.value),
-      subcounty: parseInt(e.target.subcounty.value),
-      category: parseInt(e.target.category.value),
-      title: e.target.title.value,
-      price: e.target.price.value,
-      description: e.target.description.value,
-      image: e.target.product_image.value,
-      contact: e.target.phone.value,
-      location: e.target.location.value,
-    };
+    // formData.append("title", e.target.title.value);
+    const formData = new FormData();
+    formData.append("county", e.target.county.value);
+    formData.append("subcounty", e.target.subcounty.value);
+    formData.append("category", e.target.category.value);
+    formData.append("title", e.target.title.value);
+    formData.append("price", e.target.price.value);
+    formData.append("description", e.target.description.value);
+    formData.append("contact", e.target.contact.value);
+    formData.append("location", e.target.location.value);
+    formData.append("image", picture, picture.name);
 
     // posting data to backend
     const axiospost = async () => {
       await axios
-        .post("/poultrycreate/", data, {
+        .post("/poultrycreate/", formData, {
           headers: {
             "content-type": "multipart/form-data",
           },
@@ -75,7 +78,14 @@ function Sell() {
         .catch((err) => console.log(err));
     };
     axiospost();
-    console.log(data);
+    swal({
+      title: "Success!",
+      text: "Product Posted successfully!",
+      icon: "success",
+      button: "Close!",
+    });
+    // console.log(formData);
+    history.push("/");
   };
 
   return (
@@ -88,7 +98,7 @@ function Sell() {
           <label className="form-label fw-bold">County</label>
           <select
             id="county"
-            class="form-select"
+            className="form-select"
             onChange={getsubcounties}
             required
           >
@@ -102,7 +112,7 @@ function Sell() {
         </div>
         <div className="col-md-6 ">
           <label className="form-label fw-bold">Sub County</label>
-          <select id="subcounty" class="form-select" required>
+          <select id="subcounty" className="form-select" required>
             <option defaultValue>Choose Subcounty...</option>
             {subcounties.map((subcounty) => (
               <option key={subcounty.id} value={subcounty.id}>
@@ -113,7 +123,7 @@ function Sell() {
         </div>
         <div className="col-md-2 mt-3">
           <label className="form-label fw-bold">Category</label>
-          <select id="category" class="form-select required">
+          <select id="category" className="form-select required">
             <option defaultValue>Choose Category...</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -129,7 +139,7 @@ function Sell() {
             className="form-control"
             id="title"
             name="title"
-            maxlength="30"
+            maxLength="30"
             placeholder="A brief product title e.g Kienyenji Chicken"
             required
           />
@@ -141,7 +151,7 @@ function Sell() {
             className="form-control"
             id="price"
             name="price"
-            maxlength="30"
+            maxLength="30"
             placeholder="Negotiable"
             required
           />
@@ -149,7 +159,7 @@ function Sell() {
         <div className="col-md-8 mt-3">
           <label className="form-label fw-bold">Product Description</label>
           <textarea
-            class="form-control"
+            className="form-control"
             id="description"
             rows="8"
             placeholder="Describe your product e.g Quantity, price ranges, nature of product e.t.c"
@@ -161,13 +171,13 @@ function Sell() {
           <input
             type="file"
             accept=".jpg,.jpeg,.png"
-            class="form-control"
+            className="form-control"
             id="product_image"
             onChange={onChangePicture}
             required
           />
           <div className="myimagepreview mt-2 mx-1">
-            <img className="" src={picture && picture} alt=""></img>
+            <img className="" src={imageurl && imageurl} alt=""></img>
           </div>
         </div>
         <div className="col-md-6 mt-3">
@@ -175,8 +185,8 @@ function Sell() {
           <input
             type="number"
             className="form-control"
-            id="phone"
-            maxlength="15"
+            id="contact"
+            maxLength="15"
             placeholder="Business Contact Number, 07-------"
             required
           />
@@ -188,7 +198,7 @@ function Sell() {
             type="text"
             className="form-control"
             id="location"
-            maxlength="30"
+            maxLength="30"
             placeholder="Business Location e.g Street name, Address..."
             required
           />
