@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar">
       <div className="container-fluid">
         <Link className="navbar-brand d-flex" to="/">
-          <h4 className="m-1 ">ProfitablePoultry</h4>
+          <h4 className="m-1 ">E-KUKU</h4>
         </Link>
         <button
           className="navbar-toggler"

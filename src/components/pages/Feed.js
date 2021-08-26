@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
+import NoPosts from "../inc/NoPosts";
 
 function Egg() {
   const [posts, setPosts] = useState([]);
@@ -31,11 +32,7 @@ function Egg() {
         </div>
       );
     } else {
-      return (
-        <h2 className="text-muted text-center mt-4">
-          No Products Found, try again later
-        </h2>
-      );
+      return <NoPosts />;
     }
   } else {
     return <Spinner />;

@@ -16,7 +16,9 @@ function Sell() {
     const response = await axios
       .get("/getcounty")
       .catch((err) => console.log(err));
-    setCounties(response.data);
+    if (response && response.data) {
+      setCounties(response.data);
+    }
   };
 
   const getsubcounties = (e) => {
@@ -26,7 +28,9 @@ function Sell() {
       const response = await axios
         .get(`/getsubcounty/${p}`)
         .catch((err) => console.log(err));
-      setSubcounties(response.data);
+      if (response && response.data) {
+        setSubcounties(response.data);
+      }
       // console.log(response.data);
     };
     subc();
@@ -38,7 +42,9 @@ function Sell() {
     const response = await axios
       .get("/getcategory")
       .catch((err) => console.log(err));
-    setCategories(response.data);
+    if (response && response.data) {
+      setCategories(response.data);
+    }
   };
 
   // console.log(counties);
@@ -94,7 +100,7 @@ function Sell() {
         Post Product For Free
       </p>
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-5 ">
-        <div className="col-md-6 ">
+        <div className="col-md-6 mt-3">
           <label className="form-label fw-bold">County</label>
           <select
             id="county"
@@ -110,7 +116,7 @@ function Sell() {
             ))}
           </select>
         </div>
-        <div className="col-md-6 ">
+        <div className="col-md-6 mt-3 ">
           <label className="form-label fw-bold">Sub County</label>
           <select id="subcounty" className="form-select" required>
             <option defaultValue>Choose Subcounty...</option>
