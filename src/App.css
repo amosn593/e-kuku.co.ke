@@ -54,6 +54,5 @@ body {
 
 .myfooter {
   margin-bottom: 0px;
-  bottom: 0px;
-  margin-bottom: -100px;
+  bottom: 0px !important;
 }

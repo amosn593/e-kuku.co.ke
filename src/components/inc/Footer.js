@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="row bg-success mx-0 mt-5 myfooter">
-      <div className="col-md-12 text-center mt-3">
+      <div className="col-md-3 mt-3"></div>
+      <div className="col-md-6 text-center mt-3">
         <p className="text-center text-white ">
           <Link className="text-white mx-1" to="/">
             Terms & Conditions
@@ -13,10 +14,9 @@ function Footer() {
             Privacy Policy
           </Link>
         </p>
-        <p className="text-center text-white">
-          Copyright @2021 | amosndonga@gmail.com
-        </p>
+        <p className="text-center text-white">Copyright @2021 | E-KUKU</p>
       </div>
+      <div className="col-md-3 mt-3"></div>
     </div>
   );
 }

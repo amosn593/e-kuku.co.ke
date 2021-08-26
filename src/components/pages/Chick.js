@@ -27,7 +27,7 @@ function Egg() {
   if (loading) {
     if (!noPosts) {
       return (
-        <div className="row m-2">
+        <div className="row mx-2 my-4 py-5">
           {posts.map((post) => (
             <Post key={post.id} {...post} />
           ))}

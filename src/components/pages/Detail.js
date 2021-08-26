@@ -29,7 +29,7 @@ function Detail() {
 
   if (!noPost) {
     return (
-      <div className="container mt-3">
+      <div className="container my-5 py-4">
         <div className="row mx-0 mt-3">
           <div className="col-md-6 mt-2">
             <img className="w-100" src={post.get_image} alt="product display" />

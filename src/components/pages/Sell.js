@@ -96,7 +96,7 @@ function Sell() {
 
   return (
     <div>
-      <p className="text-center align-center text-white w-75 mx-auto bg-dark py-4 mt-1">
+      <p className="text-center align-center text-white w-75 mx-auto bg-dark mx-2 my-5 py-4">
         Post Product For Free
       </p>
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-5 ">
@@ -209,9 +209,7 @@ function Sell() {
             required
           />
         </div>
-        <div className="col-12 mt-3 text-center">
-          <div className="g-recaptcha" data-sitekey="test_site"></div>
-        </div>
+        <div className="col-12 mt-3 text-center"></div>
         <div className="col-12 mt-3 text-center">
           <button type="submit" className="btn btn-warning fw-bold">
             Post Product
