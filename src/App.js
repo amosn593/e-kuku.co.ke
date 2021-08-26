@@ -9,7 +9,7 @@ import Egg from "./components/pages/Egg";
 import Home from "./components/pages/Home";
 import Detail from "./components/pages/Detail";
 import Feed from "./components/pages/Feed";
-import Sell from "./components/pages/Sell";
+import Sellbar from "./components/pages/Sellbar";
 import Login from "./components/profile/Login";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           <Route exct path="/eggs" exact component={Egg} />
           <Route exct path="/chicken_feeds" exact component={Feed} />
           <Route exct path="/product/:id" exact component={Detail} />
-          <Route exct path="/sell" exact component={Sell} />
+          <Route exct path="/sell" exact component={Sellbar} />
           <Route exct path="/sign-in" exact component={Login} />
           <Route component={NotFound} />
         </Switch>

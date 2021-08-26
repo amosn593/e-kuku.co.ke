@@ -5,7 +5,7 @@ import Spinner from "../inc/Spinner";
 
 function Home() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const noPosts = !posts || (posts && posts.length === 0);
 
@@ -15,7 +15,7 @@ function Home() {
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
-      setLoading(true);
+      setLoading(false);
     }
   };
 
@@ -25,7 +25,7 @@ function Home() {
 
   // console.log(posts);
 
-  if (loading) {
+  if (!loading) {
     if (!noPosts) {
       return (
         <div className="row mx-2 my-4 py-5">
