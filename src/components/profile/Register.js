@@ -18,12 +18,13 @@ function Register() {
     history.push("/");
   };
   return (
-    <div className="container">
-      <div className="row mt-5 pt-4">
-        <div className="col-md-3 mt-5"></div>
-        <div className="col-md-6 mt-5">
+    <div className="container mt-3">
+      <div className="row">
+        <div className="col-md-3 mt-3"></div>
+        <div className="col-md-6 mt-3">
           <h4>E-KUKU SIGN UP</h4>
-          <form className="mt-5 mb-5 pb-5">
+          <p>Sign Up for a new Account</p>
+          <form className="mt-3 mb-5 pb-5">
             <div className="mb-3">
               <label className="form-label">Email address</label>
               <input
@@ -69,7 +70,7 @@ function Register() {
             </span>
           </form>
         </div>
-        <div className="col-md-3 mt-5"></div>
+        <div className="col-md-3 mt-3"></div>
       </div>
     </div>
   );

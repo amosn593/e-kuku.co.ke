@@ -29,7 +29,7 @@ function Home() {
   if (loading) {
     if (posts.length > 0) {
       return (
-        <div className="row mx-2 my-4 py-5">
+        <div className="row mx-2 mt-3">
           {posts.map((post) => (
             <Post key={post.id} {...post} />
           ))}

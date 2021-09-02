@@ -105,8 +105,8 @@ function Sell() {
   // }
 
   return (
-    <div className="container mt-3 pt-3">
-      <div className="w-75 mx-auto bg-dark mt-5">
+    <div className="container mt-3">
+      <div className="w-75 mx-auto bg-dark">
         <p className="text-center align-center text-white py-4">
           Post Your Product For Free
         </p>

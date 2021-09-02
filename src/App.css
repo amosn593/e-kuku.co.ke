@@ -63,6 +63,9 @@ body {
   background-color: aqua;
 }
 
-.myfooter {
-  bottom: 0px !important;
+.page-content {
+  min-height: 90vh;
+  position: relative;
 }
+
+

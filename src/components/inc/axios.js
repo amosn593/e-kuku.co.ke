@@ -5,5 +5,5 @@ export const axios = Axios.create({
   headers: {
     "content-type": "multipart/form-data",
   },
-  timeout: 4000,
+  timeout: 3000,
 });
