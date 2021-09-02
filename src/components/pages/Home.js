@@ -5,17 +5,17 @@ import Spinner from "../inc/Spinner";
 
 function Home() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const noPosts = !posts || (posts && posts.length === 0);
+  const noPosts = !posts;
 
   const getPosts = async () => {
     const response = await axios
       .get("/latestpoultry")
       .catch((err) => console.log(err));
-    if (response && response.data) {
+    if (response && response.data.length > 0) {
       setPosts(response.data);
-      setLoading(false);
+      setLoading(true);
     }
   };
 
@@ -24,9 +24,10 @@ function Home() {
   }, []);
 
   // console.log(posts);
+  // console.log(loading);
 
-  if (!loading) {
-    if (!noPosts) {
+  if (loading) {
+    if (posts.length > 0) {
       return (
         <div className="row mx-2 my-4 py-5">
           {posts.map((post) => (

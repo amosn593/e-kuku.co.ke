@@ -5,12 +5,14 @@ import Footer from "./components/inc/Footer";
 import NotFound from "./components/inc/NotFound";
 import Chick from "./components/pages/Chick";
 import Chicken from "./components/pages/Chicken";
+import Equipments from "./components/pages/Equipments";
 import Egg from "./components/pages/Egg";
 import Home from "./components/pages/Home";
 import Detail from "./components/pages/Detail";
 import Feed from "./components/pages/Feed";
-import Sellbar from "./components/pages/Sellbar";
+import Sell from "./components/pages/Sell";
 import Login from "./components/profile/Login";
+import Register from "./components/profile/Register";
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
           <Route exct path="/eggs" exact component={Egg} />
           <Route exct path="/chicken_feeds" exact component={Feed} />
           <Route exct path="/product/:id" exact component={Detail} />
-          <Route exct path="/sell" exact component={Sellbar} />
+          <Route exct path="/sell" exact component={Sell} />
+          <Route exct path="/poultry_structures" exact component={Equipments} />
           <Route exct path="/sign-in" exact component={Login} />
+          <Route exct path="/sign-up" exact component={Register} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

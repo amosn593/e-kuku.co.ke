@@ -24,7 +24,6 @@ function Post(props) {
             View Details
           </Link>
         </div>
-        <div className="card-footer text-muted">{props.date_posted}</div>
       </div>
     </div>
   );

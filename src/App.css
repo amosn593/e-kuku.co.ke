@@ -19,6 +19,11 @@ body {
 
 .mynavbar {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 12px !important;
+}
+
+.loggedbtn {
+  font-size: 10px !important;
 }
 
 .mycardbody {
@@ -52,7 +57,12 @@ body {
   color: red;
 }
 
+.error {
+  text-align: center;
+  color: red;
+  background-color: aqua;
+}
+
 .myfooter {
-  margin-bottom: 0px;
   bottom: 0px !important;
 }

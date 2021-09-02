@@ -49,7 +49,7 @@ function Detail() {
               <p className="p-2">Price: {post.price}</p>
             </div>
             <div className="bg-light">
-              <h4 className="text-center btn-secondary py-3">Business Name</h4>
+              <h4 className="text-center btn-secondary py-3">Contact Details</h4>
               <p className="p-2">Contact: {post.contact}</p>
               <p className="p-2">County: {post.get_county}</p>
               <p className="p-2">Sub County: {post.get_subcounty}</p>

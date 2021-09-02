@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 import { axios } from "../inc/axios";
 import swal from "sweetalert";
+import Login from "../profile/Login";
 
 function Sell() {
   const [picture, setPicture] = useState(null);
@@ -9,6 +11,10 @@ function Sell() {
   const [counties, setCounties] = useState([]);
   const [subcounties, setSubcounties] = useState([]);
   const [categories, setCategories] = useState([]);
+
+  const user = useSelector((state) => state.user);
+  const loggedin = user.loggedin;
+  const loggedout = user.loggedout;
 
   const history = useHistory();
 
@@ -84,21 +90,28 @@ function Sell() {
         .catch((err) => console.log(err));
     };
     axiospost();
-    swal({
-      title: "Success!",
-      text: "Product Posted successfully!",
-      icon: "success",
-      button: "Close!",
-    });
+    // swal({
+    //   title: "Success!",
+    //   text: "Product Posted successfully!",
+    //   icon: "success",
+    //   button: "Close!",
+    // });
     // console.log(formData);
     history.push("/");
   };
 
+  // if (!loggedin & loggedout) {
+  //   return <Login />;
+  // }
+
   return (
-    <div>
-      <p className="text-center align-center text-white w-75 mx-auto bg-dark mx-2 my-5 py-4">
-        Post Product For Free
-      </p>
+    <div className="container mt-3 pt-3">
+      <div className="w-75 mx-auto bg-dark mt-5">
+        <p className="text-center align-center text-white py-4">
+          Post Your Product For Free
+        </p>
+      </div>
+
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-5 ">
         <div className="col-md-6 mt-3">
           <label className="form-label fw-bold">County</label>
@@ -127,7 +140,7 @@ function Sell() {
             ))}
           </select>
         </div>
-        <div className="col-md-2 mt-3">
+        <div className="col-md-3 mt-3">
           <label className="form-label fw-bold">Category</label>
           <select id="category" className="form-select required">
             <option defaultValue>Choose Category...</option>
@@ -150,7 +163,7 @@ function Sell() {
             required
           />
         </div>
-        <div className="col-md-4 mt-3">
+        <div className="col-md-3 mt-3">
           <label className="form-label fw-bold">Product Price</label>
           <input
             type="text"

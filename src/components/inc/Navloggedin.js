@@ -68,6 +68,14 @@ function Navloggedin() {
             </li>
             <li className="nav-item fs-5">
               <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/poultry_structures"
+              >
+                Poultry Structures
+              </Link>
+            </li>
+            <li className="nav-item fs-5">
+              <Link
                 className="nav-link btn-warning text-white  rounded-pill text-center mx-1"
                 to="/sell"
               >
@@ -78,12 +86,12 @@ function Navloggedin() {
               <div className="btn-group">
                 <button
                   type="button"
-                  className="btn btn-success dropdown-toggle nav-item fs-5 text-center"
+                  className="btn btn-success dropdown-toggle nav-item fs-5 text-center loggedbtn"
                   data-bs-toggle="dropdown"
                   data-bs-display="static"
                   aria-expanded="false"
                 >
-                  {user.name}
+                  {user.email}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-lg-end">
                   <li>

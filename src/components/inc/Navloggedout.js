@@ -55,6 +55,14 @@ function Navloggedout() {
             </li>
             <li className="nav-item fs-5">
               <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/poultry_structures"
+              >
+                Poultry Structures
+              </Link>
+            </li>
+            <li className="nav-item fs-5">
+              <Link
                 className="nav-link btn-warning text-white  rounded-pill text-center mx-1"
                 to="/sell"
               >
