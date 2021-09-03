@@ -6,7 +6,7 @@ import NoPosts from "../inc/NoPosts";
 
 function Egg() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const noPosts = !posts || (posts && posts.length === 0);
 
@@ -16,7 +16,9 @@ function Egg() {
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
-      setLoading(true);
+      setLoading(false);
+    } else {
+      setLoading(false);
     }
   };
 
@@ -24,7 +26,7 @@ function Egg() {
     getPosts();
   }, []);
 
-  if (loading) {
+  if (!loading) {
     if (!noPosts) {
       return (
         <div className="row mx-2 mt-3">

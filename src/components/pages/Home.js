@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
+import NoPosts from "../inc/NoPosts";
 
 function Home() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const noPosts = !posts;
 
@@ -13,9 +14,11 @@ function Home() {
     const response = await axios
       .get("/latestpoultry")
       .catch((err) => console.log(err));
-    if (response && response.data.length > 0) {
+    if (response && response.data) {
       setPosts(response.data);
-      setLoading(true);
+      setLoading(false);
+    } else {
+      setLoading(false);
     }
   };
 
@@ -26,7 +29,7 @@ function Home() {
   // console.log(posts);
   // console.log(loading);
 
-  if (loading) {
+  if (!loading) {
     if (posts.length > 0) {
       return (
         <div className="row mx-2 mt-3">
@@ -36,11 +39,7 @@ function Home() {
         </div>
       );
     } else {
-      return (
-        <h2 className="text-muted text-center mt-4">
-          No Products Found, try again later
-        </h2>
-      );
+      return <NoPosts />;
     }
   } else {
     return <Spinner />;
