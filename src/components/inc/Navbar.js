@@ -104,7 +104,7 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {user.email}
+                  {/* {user.userinfo['email']} */}
                 </a>
                 <ul
                   className="dropdown-menu dropdown-menu-lg-end"

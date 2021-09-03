@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { axios } from "../inc/axios";
-import swal from "sweetalert";
-import Login from "../profile/Login";
+// import swal from "sweetalert";
+// import Login from "../profile/Login";
 
 function Sell() {
   const [picture, setPicture] = useState(null);
@@ -12,9 +12,8 @@ function Sell() {
   const [subcounties, setSubcounties] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const user = useSelector((state) => state.user);
-  const loggedin = user.loggedin;
-  const loggedout = user.loggedout;
+  // const user = useSelector((state) => state.user);
+  
 
   const history = useHistory();
 
@@ -80,13 +79,14 @@ function Sell() {
     formData.append("image", picture, picture.name);
 
     // posting data to backend
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
     const axiospost = async () => {
       await axios
-        .post("/poultrycreate/", formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
+        .post("/poultrycreate/", formData, config)
         .catch((err) => console.log(err));
     };
     axiospost();

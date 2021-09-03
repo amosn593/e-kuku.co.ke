@@ -1,15 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { axios } from "../inc/axios";
-import { login } from "../../redux/userSlice";
-// import { loginuser } from "../../redux/Apicalls";
+import { login_user } from "../../redux/Apicalls";
 
 function Login() {
-  const [access, setAccess] = useState("");
-  const [refresh, setRefresh] = useState("");
+  // const [access, setAccess] = useState("");
+  // const [refresh, setRefresh] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,50 +18,29 @@ function Login() {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const user = {
+  const data = {
     email: email,
     password: password,
   };
 
-  const config = {
-    headers: {
-      "content-type": "application/json",
-    },
-  };
-
-  const body = JSON.stringify(user);
+  const body = JSON.stringify(data);
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.user);
 
-  //   console.log(email);
+  const useloaded = user.useloaded;
   const onSubmit = async (e) => {
     e.preventDefault();
-    // loginuser({ email, password }, dispatch);
-    // console.log(body);
-    const response = await axios
-      .post("/auth/jwt/create/", body, config)
-      .catch((err) => console.log(err));
-    if (response && response.data) {
-      console.log(response.data.access);
-      setAccess(response.data.access);
-      setRefresh(response.data.refresh);
-      console.log(email);
-      console.log(response.data.access);
-      console.log(access);
-      console.log(email);
-      console.log(refresh);
-      dispatch(login({ email, access, refresh }));
-      history.push("/");
-    } else {
-      console.log("something went wrong!!!");
-    }
 
-    // history.push("/");
+    login_user(body, dispatch);
+
+    
+    history.push("/");
   };
   return (
-    <div className="container mt-3">
-      <div className="row">
+    <div className="container mt-3 mx-3">
+      <div className="row mx-3">
         <div className="col-md-3 mt-3"></div>
         <div className="col-md-6 mt-3">
           <h4>E-KUKU SIGN IN</h4>

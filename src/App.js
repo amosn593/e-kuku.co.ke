@@ -19,8 +19,8 @@ import ResetPasswordEmail from "./components/profile/ResetPasswordEmail";
 function App() {
   return (
     <div className="main-content">
-      <div className="page-content">
-        <Router>
+      <Router>
+        <div className="page-content">
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />
@@ -52,9 +52,9 @@ function App() {
             />
             <Route component={NotFound} />
           </Switch>
-        </Router>
-      </div>
-      <Footer />
+        </div>
+        <Footer />
+      </Router>
     </div>
   );
 }

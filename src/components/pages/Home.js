@@ -8,7 +8,7 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const noPosts = !posts;
+  // const noPosts = !posts;
 
   const getPosts = async () => {
     const response = await axios
