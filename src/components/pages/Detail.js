@@ -74,7 +74,7 @@ function Detail() {
     return (
       <div>
         <h6 className="text-muted text-center mt-4">
-          Something went wrong, try again later!!!
+          Product not found!!!
         </h6>
       </div>
     );

@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { axios } from "../inc/axios";
 import { login } from "../../redux/userSlice";
+// import { loginuser } from "../../redux/Apicalls";
 
 function Login() {
+  const [access, setAccess] = useState("");
+  const [refresh, setRefresh] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,22 +20,46 @@ function Login() {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const [errors, setErrors] = useState("error");
-  const [error, setError] = useState(true);
+  const user = {
+    email: email,
+    password: password,
+  };
+
+  const config = {
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+
+  const body = JSON.stringify(user);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   //   console.log(email);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      // setError[true];
-      // setErrors["Email and Password cant be blank!!!"];
-    } else {
-      dispatch(login({ email }));
+    // loginuser({ email, password }, dispatch);
+    // console.log(body);
+    const response = await axios
+      .post("/auth/jwt/create/", body, config)
+      .catch((err) => console.log(err));
+    if (response && response.data) {
+      console.log(response.data.access);
+      setAccess(response.data.access);
+      setRefresh(response.data.refresh);
+      console.log(email);
+      console.log(response.data.access);
+      console.log(access);
+      console.log(email);
+      console.log(refresh);
+      dispatch(login({ email, access, refresh }));
       history.push("/");
+    } else {
+      console.log("something went wrong!!!");
     }
+
+    // history.push("/");
   };
   return (
     <div className="container mt-3">
@@ -67,7 +95,7 @@ function Login() {
                 onChange={(e) => onChange(e)}
               />
             </div>
-            <div className="mb-3 error">{error && <p>{errors}</p>}</div>
+            <div className="mb-3 error">{}</div>
             <button type="submit" className="btn btn-primary">
               Sign In
             </button>
