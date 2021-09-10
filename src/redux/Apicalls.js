@@ -91,3 +91,23 @@ export const login_user = async (body, dispatch, history) => {
     dispatch(loginerror());
   }
 };
+
+export const signup_user = async (body, dispatch) => {
+  dispatch(signup_start());
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.post("/auth/users/", body, config);
+    if (res.status === 201 || res.status === 500) {
+      dispatch(signup());
+    } else {
+      dispatch(signup_error());
+    }
+  } catch (err) {
+    dispatch(signup_error());
+  }
+};

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { axios } from "../inc/axios";
-// import swal from "sweetalert";
-// import Login from "../profile/Login";
 
 function Sell() {
   const [picture, setPicture] = useState(null);
@@ -19,6 +16,10 @@ function Sell() {
   const loaded = user.userloaded;
 
   const history = useHistory();
+
+  if (!authenticated && !loaded) {
+    history.push("/sign-in");
+  }
 
   const getcounties = async () => {
     const response = await axios
@@ -93,16 +94,12 @@ function Sell() {
         .catch((err) => console.log(err));
     };
     axiospost();
-    
+
     history.push("/");
   };
 
-  if (!authenticated & !loaded) {
-    return <Redirect to="/sign-in" />;
-  }
-
   return (
-    <div className="container mt-3 py-3">
+    <div className="container my-3 py-5">
       <div className="w-75 mx-auto bg-dark">
         <p className="text-center align-center text-white py-4">
           Post Your Product For Free
@@ -110,32 +107,34 @@ function Sell() {
       </div>
 
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-5 ">
-        <div className="col-md-6 mt-3">
-          <label className="form-label fw-bold">County</label>
-          <select
-            id="county"
-            className="form-select"
-            onChange={getsubcounties}
-            required
-          >
-            <option defaultValue>Choose County...</option>
-            {counties.map((county) => (
-              <option key={county.id} value={county.id}>
-                {county.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="col-md-6 mt-3 ">
-          <label className="form-label fw-bold">Sub County</label>
-          <select id="subcounty" className="form-select" required>
-            <option defaultValue>Choose Subcounty...</option>
-            {subcounties.map((subcounty) => (
-              <option key={subcounty.id} value={subcounty.id}>
-                {subcounty.name}
-              </option>
-            ))}
-          </select>
+        <div className="row">
+          <div className="col-md-6 mt-3">
+            <label className="form-label fw-bold">County</label>
+            <select
+              id="county"
+              className="form-select"
+              onChange={getsubcounties}
+              required
+            >
+              <option defaultValue>Choose County...</option>
+              {counties.map((county) => (
+                <option key={county.id} value={county.id}>
+                  {county.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="col-md-6 mt-3 ">
+            <label className="form-label fw-bold">Sub County</label>
+            <select id="subcounty" className="form-select" required>
+              <option defaultValue>Choose Subcounty...</option>
+              {subcounties.map((subcounty) => (
+                <option key={subcounty.id} value={subcounty.id}>
+                  {subcounty.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="col-md-3 mt-3">
           <label className="form-label fw-bold">Category</label>

@@ -101,12 +101,13 @@ export const userSlice = createSlice({
       state.signup_pending = false;
       state.signup = true;
       state.signup_error = false;
+      state.isAuthenticated = false;
     },
     signup_error: (state, action) => {
       state.signup_pending = false;
       state.signup = false;
       state.signup_error = true;
-      state.signup_error_msg = action.payload;
+      state.signup_error_msg = "user account with this email already exists.";
     },
   },
 });

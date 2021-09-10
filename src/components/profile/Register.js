@@ -1,13 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { axios } from "../inc/axios";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import { signup_user } from "../../redux/Apicalls";
 
 function Register() {
-  const { signup_error, signup_error_msg, signup_pending, signup, logout } =
-    useSelector((state) => state.user);
+  const [passerror, setPasserror] = useState(false);
+  const [error_msg, setError_msg] = useState("");
+  const {
+    signup_error,
+    signup_error_msg,
+    signup_pending,
+    signup,
+    isAuthenticated,
+  } = useSelector((state) => state.user);
   const [formData, setFormData] = useState({
     email: "",
     user_name: "",
@@ -42,28 +49,19 @@ function Register() {
   const registeruser = async (e) => {
     e.preventDefault();
     if (password === re_password) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      try {
-        const res = await axios.post("/auth/users/", body, config);
-        console.log(res);
-        if (res.status === 201) {
-          console.log(res);
-          history.push("/sign-in");
-        } else {
-          console.log(res);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+      signup_user(body, dispatch);
+    } else {
+      setPasserror(true);
+      setError_msg("Two passwords did not match!!!");
     }
   };
 
-  if (signup && logout) {
+  if (isAuthenticated) {
     history.push("/");
+  }
+
+  if (signup) {
+    history.push("/sign-in");
   }
 
   return (
@@ -74,6 +72,7 @@ function Register() {
           <h4>E-KUKU SIGN UP</h4>
           <p>Sign Up for a new Account</p>
           {signup_error && <p className="login-error">{signup_error_msg}</p>}
+          {passerror && <p className="login-error">{error_msg}</p>}
           <form onSubmit={(e) => registeruser(e)} className="mt-3">
             <div className="row my-2">
               <div className="col-md-6">
@@ -113,7 +112,7 @@ function Register() {
                 <input
                   type="text"
                   name="user_name"
-                  maxLength="8"
+                  maxLength="7"
                   className="form-control"
                   placeholder="Max Length 8 "
                   required
@@ -127,8 +126,11 @@ function Register() {
                 <input
                   type="password"
                   name="password"
+                  minLength="8"
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[@#$,.()%!])(?=.*[A-Z]).{8,15}"
+                  title="Must contain at least one  number and one uppercase and lowercase letter, special characters and at least 8 or more characters"
                   className="form-control"
-                  placeholder="6 charachers and above"
+                  placeholder="8 charachers and above"
                   required
                   onChange={(e) => onChange(e)}
                 />
@@ -138,6 +140,7 @@ function Register() {
                 <input
                   type="password"
                   name="re_password"
+                  minLength="8"
                   className="form-control"
                   required
                   onChange={(e) => onChange(e)}
@@ -150,7 +153,7 @@ function Register() {
               type="submit"
               className="btn btn-primary mt-4"
             >
-              Sign Up
+              Register
             </button>
             <p className=" my-3 py-4">
               Already Have an account?

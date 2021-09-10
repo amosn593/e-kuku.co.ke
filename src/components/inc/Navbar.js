@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userSlice";
 
 function Navbar() {
-  const { loggedin, userloaded, isAuthenticated } = useSelector(
+  const { userloaded, isAuthenticated, userinfo } = useSelector(
     (state) => state.user
   );
 
@@ -105,7 +105,7 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Hello,
+                  Hello, {userinfo.user_name}
                 </a>
                 <ul
                   className="dropdown-menu dropdown-menu-lg-end"
