@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { axios } from "../inc/axios";
 // import swal from "sweetalert";
 // import Login from "../profile/Login";
@@ -12,8 +13,10 @@ function Sell() {
   const [subcounties, setSubcounties] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  // const user = useSelector((state) => state.user);
-  
+  const user = useSelector((state) => state.user);
+
+  const authenticated = user.isAuthenticated;
+  const loaded = user.userloaded;
 
   const history = useHistory();
 
@@ -90,22 +93,16 @@ function Sell() {
         .catch((err) => console.log(err));
     };
     axiospost();
-    // swal({
-    //   title: "Success!",
-    //   text: "Product Posted successfully!",
-    //   icon: "success",
-    //   button: "Close!",
-    // });
-    // console.log(formData);
+    
     history.push("/");
   };
 
-  // if (!loggedin & loggedout) {
-  //   return <Login />;
-  // }
+  if (!authenticated & !loaded) {
+    return <Redirect to="/sign-in" />;
+  }
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-3 py-3">
       <div className="w-75 mx-auto bg-dark">
         <p className="text-center align-center text-white py-4">
           Post Your Product For Free

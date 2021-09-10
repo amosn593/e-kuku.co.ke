@@ -7,8 +7,25 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-y: scroll;
+.main-content {
+  position: relative;
+  min-height: 95vh;
+}
+
+.page-content {
+  margin-top: 90px !important;
+  position: inherit !important;
+  /* margin-bottom: 60px !important; */
+  /* padding-bottom: 20px !important; */
+}
+
+.footer {
+  margin-top: -20px !important;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  font-size: 14px !important;
 }
 
 body {
@@ -20,6 +37,29 @@ body {
 .mynavbar {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
   font-size: 12px !important;
+  position: fixed !important;
+  top: 0px;
+  width: 100%;
+  z-index: 10000;
+}
+
+.nav-link {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 10px 15px !important;
+  margin: 5px 5px !important;
+}
+
+.btn-signin {
+  background-color: #00a0eb !important ;
+}
+
+.btn-signin:hover {
+  background-color: #004274 !important ;
+}
+
+.btn-sell:hover {
+  background-color: #004274 !important ;
 }
 
 .loggedbtn {
@@ -57,13 +97,29 @@ body {
   color: red;
 }
 
+.sign-in:disabled {
+  cursor: not-allowed !important;
+}
+
 .error {
   text-align: center;
   color: red;
   background-color: aqua;
 }
 
-.page-content {
-  min-height: 85vh;
-  position: relative;
+.login-error {
+  padding: 14px 20px;
+  background-color: brown;
+  color: aliceblue;
+}
+
+@media screen and (max-width: 560px) {
+  .mynavbar {
+    position: relative !important;
+  }
+  .page-content {
+    margin-top: 20px !important;
+    /* margin-bottom: 60px !important; */
+    padding-bottom: 20px;
+  }
 }

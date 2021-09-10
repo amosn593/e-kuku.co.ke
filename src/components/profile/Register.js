@@ -1,22 +1,71 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { axios } from "../inc/axios";
 import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 
 function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
-  const dispatch = useDispatch();
+  const { signup_error, signup_error_msg, signup_pending, signup, logout } =
+    useSelector((state) => state.user);
+  const [formData, setFormData] = useState({
+    email: "",
+    user_name: "",
+    first_name: "",
+    last_name: "",
+    password: "",
+    re_password: "",
+  });
+
+  const { email, user_name, first_name, last_name, password, re_password } =
+    formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const data = {
+    email: email,
+    user_name: user_name,
+    first_name: first_name,
+    last_name: last_name,
+    password: password,
+    re_password: re_password,
+  };
+
+  const body = JSON.stringify(data);
+
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
   //   console.log(email);
-  const registeruser = (e) => {
+  const registeruser = async (e) => {
     e.preventDefault();
-    // dispatch(login());
-    history.push("/");
+    if (password === re_password) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      try {
+        const res = await axios.post("/auth/users/", body, config);
+        console.log(res);
+        if (res.status === 201) {
+          console.log(res);
+          history.push("/sign-in");
+        } else {
+          console.log(res);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
+
+  if (signup && logout) {
+    history.push("/");
+  }
+
   return (
     <div className="container mt-3">
       <div className="row">
@@ -24,50 +73,91 @@ function Register() {
         <div className="col-md-6 mt-3">
           <h4>E-KUKU SIGN UP</h4>
           <p>Sign Up for a new Account</p>
-          <form className="mt-3 mb-5 pb-5">
-            <div className="mb-3">
-              <label className="form-label">Email address</label>
-              <input
-                type="email"
-                className="form-control"
-                required
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <div className="form-text">
-                We'll never share your email with anyone else.
+          {signup_error && <p className="login-error">{signup_error_msg}</p>}
+          <form onSubmit={(e) => registeruser(e)} className="mt-3">
+            <div className="row my-2">
+              <div className="col-md-6">
+                <label className="form-label">First Name</label>
+                <input
+                  type="text"
+                  name="first_name"
+                  className="form-control"
+                  required
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Last Name</label>
+                <input
+                  type="text"
+                  name="last_name"
+                  className="form-control"
+                  required
+                  onChange={(e) => onChange(e)}
+                />
               </div>
             </div>
-            <div class="mb-3">
-              <label className="form-label">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
+            <div className="row my-2">
+              <div className="col-md-6">
+                <label className="form-label">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="form-control"
+                  required
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">User Name</label>
+                <input
+                  type="text"
+                  name="user_name"
+                  maxLength="8"
+                  className="form-control"
+                  placeholder="Max Length 8 "
+                  required
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
             </div>
-            <div class="mb-3">
-              <label className="form-label">Confirm Password</label>
-              <input
-                type="password"
-                className="form-control"
-                required
-                onChange={(e) => setPassword2(e.target.value)}
-              />
+            <div className="row">
+              <div className="col-md-6">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  placeholder="6 charachers and above"
+                  required
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  name="re_password"
+                  className="form-control"
+                  required
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
             </div>
+
             <button
+              disabled={signup_pending}
               type="submit"
-              class="btn btn-primary"
-              onClick={registeruser}
+              className="btn btn-primary mt-4"
             >
               Sign Up
             </button>
-            <span className="mx-2">
+            <p className=" my-3 py-4">
               Already Have an account?
               <Link to="/sign-in" className="mx-1">
                 Sign In
               </Link>
-            </span>
+            </p>
           </form>
         </div>
         <div className="col-md-3 mt-3"></div>

@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/inc/Navbar";
@@ -15,13 +16,21 @@ import Login from "./components/profile/Login";
 import Register from "./components/profile/Register";
 import Resetpassword from "./components/profile/Resetpassword";
 import ResetPasswordEmail from "./components/profile/ResetPasswordEmail";
+import { useDispatch } from "react-redux";
+import { check_authenticated, load_user } from "./redux/Apicalls";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(check_authenticated());
+    dispatch(load_user());
+  }, []);
+
   return (
     <div className="main-content">
       <Router>
+        <Navbar />
         <div className="page-content">
-          <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/chicks" exact component={Chick} />
@@ -53,7 +62,9 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </div>
-        <Footer />
+        <div className="footer">
+          <Footer />
+        </div>
       </Router>
     </div>
   );

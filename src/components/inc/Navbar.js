@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userSlice";
 
 function Navbar() {
-  const user = useSelector((state) => state.user);
-
-  const isAuthenticated = user.isAuthenticated;
+  const { loggedin, userloaded, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -20,8 +20,9 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar">
       <div className="container-fluid">
-        <Link className="navbar-brand d-flex" to="/">
-          <h4 className="m-1 ">E-KUKU</h4>
+        <Link className="navbar-brand lead d-flex" to="/">
+          {/* <h4 className="m-1 lead ">E-KUKU</h4> */}
+          E-KUKU
         </Link>
         <button
           className="navbar-toggler"
@@ -36,7 +37,7 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item fs-5">
+            <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/eggs"
@@ -44,7 +45,7 @@ function Navbar() {
                 Eggs
               </Link>
             </li>
-            <li className="nav-item fs-5">
+            <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicks"
@@ -52,7 +53,7 @@ function Navbar() {
                 Chicks
               </Link>
             </li>
-            <li className="nav-item fs-5">
+            <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicken"
@@ -60,7 +61,7 @@ function Navbar() {
                 Chicken
               </Link>
             </li>
-            <li className="nav-item fs-5">
+            <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicken_feeds"
@@ -68,7 +69,7 @@ function Navbar() {
                 Chicken Feeds
               </Link>
             </li>
-            <li className="nav-item fs-5">
+            <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/poultry_structures"
@@ -76,35 +77,35 @@ function Navbar() {
                 Poultry Structures
               </Link>
             </li>
-            <li className="nav-item fs-5">
+            <li className="nav-item">
               <Link
-                className="nav-link btn-warning text-white  rounded-pill text-center mx-1"
+                className="nav-link btn-warning btn-sell text-white  rounded-pill text-center mx-1"
                 to="/sell"
               >
                 SELL
               </Link>
             </li>
-            {!isAuthenticated && (
-              <li className="nav-item fs-5">
+            {!isAuthenticated && !userloaded && (
+              <li className="nav-item">
                 <Link
-                  className="nav-link btn-info text-white  rounded-pill text-center mx-1"
+                  className="nav-link btn-signin text-white  rounded-pill text-center mx-1"
                   to="/sign-in"
                 >
                   Sign In
                 </Link>
               </li>
             )}
-            {isAuthenticated && (
+            {isAuthenticated && userloaded && (
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link btn-success dropdown-toggle fs-4"
+                  className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"
                   href="#"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {/* {user.userinfo['email']} */}
+                  Hello,
                 </a>
                 <ul
                   className="dropdown-menu dropdown-menu-lg-end"

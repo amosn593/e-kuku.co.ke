@@ -1,13 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { login_user } from "../../redux/Apicalls";
 
 function Login() {
-  // const [access, setAccess] = useState("");
-  // const [refresh, setRefresh] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -26,25 +23,31 @@ function Login() {
   const body = JSON.stringify(data);
 
   const dispatch = useDispatch();
-  const history = useHistory();
-  const user = useSelector((state) => state.user);
 
-  const useloaded = user.useloaded;
+  const history = useHistory();
+
+  const { login_pending, load_pending, error, userloaded, login_user_error } =
+    useSelector((state) => state.user);
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     login_user(body, dispatch);
-
-    
-    history.push("/");
   };
+
+  if (userloaded) {
+    history.push("/");
+  }
+
   return (
     <div className="container mt-3 mx-3">
       <div className="row mx-3">
         <div className="col-md-3 mt-3"></div>
         <div className="col-md-6 mt-3">
-          <h4>E-KUKU SIGN IN</h4>
+          <h4>SIGN IN</h4>
           <p>Sign into your Account</p>
+          {error && <p className="login-error">{login_user_error}</p>}
+
           <form onSubmit={(e) => onSubmit(e)} className="mt-3 mb-5 pb-5">
             <div className="mb-3">
               <label className="form-label">Email address</label>
@@ -73,15 +76,19 @@ function Login() {
               />
             </div>
             <div className="mb-3 error">{}</div>
-            <button type="submit" className="btn btn-primary">
+            <button
+              disabled={(login_pending || load_pending) && !error}
+              type="submit"
+              className="btn btn-primary sign-in mx-1 py-1"
+            >
               Sign In
             </button>
-            <span className="mx-2">
+            <p className="mt-3">
               Don't Have an account?
-              <Link to="/sign-up" className="mx-1">
+              <Link to="/sign-up" className="mx-1 py-1">
                 Sign Up
               </Link>
-            </span>
+            </p>
             <p className="mt-3">
               Forgot your Password?{" "}
               <Link to="/Reset-Password">Reset Password</Link>
