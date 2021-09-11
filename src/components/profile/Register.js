@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup_user } from "../../redux/Apicalls";
 
 function Register() {
+  document.title = "Register | E-KUKU";
   const [passerror, setPasserror] = useState(false);
   const [error_msg, setError_msg] = useState("");
   const {

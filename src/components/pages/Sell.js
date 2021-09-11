@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { axios } from "../inc/axios";
 
 function Sell() {
+  document.title = "Sell | E-KUKU";
+  const [posting, setPosting] = useState(false);
   const [picture, setPicture] = useState(null);
   const [imageurl, setImageurl] = useState(null);
   const [counties, setCounties] = useState([]);
@@ -12,51 +14,47 @@ function Sell() {
 
   const user = useSelector((state) => state.user);
 
-  const authenticated = user.isAuthenticated;
-  const loaded = user.userloaded;
-
   const history = useHistory();
 
-  if (!authenticated && !loaded) {
-    history.push("/sign-in");
-  }
-
   const getcounties = async () => {
-    const response = await axios
-      .get("/getcounty")
-      .catch((err) => console.log(err));
-    if (response && response.data) {
-      setCounties(response.data);
+    try {
+      const response = await axios.get("/getcounty");
+      if (response && response.data) {
+        setCounties(response.data);
+      } else {
+        console.log("");
+      }
+    } catch (err) {
+      console.log("");
     }
   };
 
-  const getsubcounties = (e) => {
+  const getsubcounties = async (e) => {
     const p = e.target.value;
-    // console.log(p);
-    const subc = async () => {
-      const response = await axios
-        .get(`/getsubcounty/${p}`)
-        .catch((err) => console.log(err));
-      if (response && response.data) {
-        setSubcounties(response.data);
+    try {
+      const res = await axios.get(`/getsubcounty/${p}`);
+      if (res && res.data) {
+        setSubcounties(res.data);
+      } else {
+        console.log("");
       }
-      // console.log(response.data);
-    };
-    subc();
+    } catch (err) {
+      console.log("");
+    }
   };
-
-  // console.log(subcounties);
 
   const getcategories = async () => {
-    const response = await axios
-      .get("/getcategory")
-      .catch((err) => console.log(err));
-    if (response && response.data) {
-      setCategories(response.data);
+    try {
+      const response = await axios.get("/getcategory");
+      if (response && response.data) {
+        setCategories(response.data);
+      } else {
+        console.log("");
+      }
+    } catch (err) {
+      console.log("");
     }
   };
-
-  // console.log(counties);
 
   useEffect(() => {
     getcounties();
@@ -68,9 +66,9 @@ function Sell() {
     setImageurl(URL.createObjectURL(e.target.files[0]));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // formData.append("title", e.target.title.value);
+    setPosting(true);
     const formData = new FormData();
     formData.append("county", e.target.county.value);
     formData.append("subcounty", e.target.subcounty.value);
@@ -86,27 +84,31 @@ function Sell() {
     const config = {
       headers: {
         "content-type": "multipart/form-data",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
       },
     };
-    const axiospost = async () => {
-      await axios
-        .post("/poultrycreate/", formData, config)
-        .catch((err) => console.log(err));
-    };
-    axiospost();
-
-    history.push("/");
+    try {
+      const res = await axios.post("/poultrycreate/", formData, config);
+      if (res.status === 201) {
+        setPosting(false);
+        history.push("/");
+      } else {
+        setPosting(false);
+      }
+    } catch (err) {
+      setPosting(false);
+    }
   };
 
   return (
-    <div className="container my-3 py-5">
-      <div className="w-75 mx-auto bg-dark">
+    <div className="container mt-2 mb-3 pt-2 pb-4">
+      <div className="w-85 mx-auto bg-dark">
         <p className="text-center align-center text-white py-4">
           Post Your Product For Free
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-5 ">
+      <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-1 ">
         <div className="row">
           <div className="col-md-6 mt-3">
             <label className="form-label fw-bold">County</label>
@@ -116,7 +118,7 @@ function Sell() {
               onChange={getsubcounties}
               required
             >
-              <option defaultValue>Choose County...</option>
+              {/* <option defaultValue>Choose County...</option> */}
               {counties.map((county) => (
                 <option key={county.id} value={county.id}>
                   {county.name}
@@ -127,7 +129,7 @@ function Sell() {
           <div className="col-md-6 mt-3 ">
             <label className="form-label fw-bold">Sub County</label>
             <select id="subcounty" className="form-select" required>
-              <option defaultValue>Choose Subcounty...</option>
+              {/* <option defaultValue>Choose Subcounty...</option> */}
               {subcounties.map((subcounty) => (
                 <option key={subcounty.id} value={subcounty.id}>
                   {subcounty.name}
@@ -139,7 +141,7 @@ function Sell() {
         <div className="col-md-3 mt-3">
           <label className="form-label fw-bold">Category</label>
           <select id="category" className="form-select required">
-            <option defaultValue>Choose Category...</option>
+            {/* <option defaultValue>Choose Category...</option> */}
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -202,7 +204,7 @@ function Sell() {
             className="form-control"
             id="contact"
             maxLength="15"
-            placeholder="Business Contact Number, 07-------"
+            placeholder="Contact Number, 07-------"
             required
           />
         </div>
@@ -214,13 +216,17 @@ function Sell() {
             className="form-control"
             id="location"
             maxLength="30"
-            placeholder="Business Location e.g Street name, Address..."
+            placeholder="Street name, Address..."
             required
           />
         </div>
         <div className="col-12 mt-3 text-center"></div>
         <div className="col-12 mt-3 text-center">
-          <button type="submit" className="btn btn-warning fw-bold">
+          <button
+            disabled={posting}
+            type="submit"
+            className="btn btn-warning fw-bold"
+          >
             Post Product
           </button>
         </div>

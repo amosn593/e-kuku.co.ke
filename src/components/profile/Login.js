@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { login_user } from "../../redux/Apicalls";
 
 function Login() {
+  document.title = "Login | E-KUKU";
   const [formData, setFormData] = useState({
     email: "",
     password: "",

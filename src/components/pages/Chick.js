@@ -5,6 +5,7 @@ import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 
 function Egg() {
+  document.title = "Chicks | E-KUKU";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,6 +17,7 @@ function Egg() {
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
+      
       setLoading(false);
     } else {
       setLoading(false);
@@ -36,9 +38,7 @@ function Egg() {
         </div>
       );
     } else {
-      return (
-        <NoPosts/>
-      );
+      return <NoPosts />;
     }
   } else {
     return <Spinner />;

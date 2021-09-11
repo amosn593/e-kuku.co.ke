@@ -29,7 +29,7 @@ function Detail() {
 
   if (!noPost) {
     return (
-      <div className="container mt-3">
+      <div className="container mt-3 mb-5 pb-5">
         <div className="row mx-0 mt-3">
           <div className="col-md-6 mt-2">
             <img className="w-100" src={post.get_image} alt="product display" />
@@ -49,7 +49,9 @@ function Detail() {
               <p className="p-2">Price: {post.price}</p>
             </div>
             <div className="bg-light">
-              <h4 className="text-center btn-secondary py-3">Contact Details</h4>
+              <h4 className="text-center btn-secondary py-3">
+                Contact Details
+              </h4>
               <p className="p-2">Contact: {post.contact}</p>
               <p className="p-2">County: {post.get_county}</p>
               <p className="p-2">Sub County: {post.get_subcounty}</p>
@@ -73,9 +75,7 @@ function Detail() {
   } else {
     return (
       <div>
-        <h6 className="text-muted text-center mt-4">
-          Product not found!!!
-        </h6>
+        <h6 className="text-muted text-center mt-4">Product not found!!!</h6>
       </div>
     );
   }

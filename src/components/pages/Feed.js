@@ -5,6 +5,7 @@ import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 
 function Egg() {
+  document.title = "Chicken Feeds | E-KUKU";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,6 +17,7 @@ function Egg() {
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
+      
       setLoading(false);
     } else {
       setLoading(false);
