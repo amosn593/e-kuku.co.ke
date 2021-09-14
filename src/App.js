@@ -16,13 +16,15 @@ import Login from "./components/profile/Login";
 import Register from "./components/profile/Register";
 import Resetpassword from "./components/profile/Resetpassword";
 import ResetPasswordEmail from "./components/profile/ResetPasswordEmail";
+import Mysells from "./components/profile/Mysells";
+import Search from "./components/inc/Search";
 import { useDispatch } from "react-redux";
 import { check_authenticated, load_user } from "./redux/Apicalls";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(check_authenticated());
+    dispatch(check_authenticated());
     dispatch(load_user());
   }, []);
 
@@ -31,6 +33,7 @@ function App() {
       <Router>
         <Navbar />
         <div className="page-content">
+          <Search />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/chicks" exact component={Chick} />
@@ -59,6 +62,7 @@ function App() {
               exact
               component={ResetPasswordEmail}
             />
+            <Route exct path="/my-sells" exact component={Mysells} />
             <Route component={NotFound} />
           </Switch>
         </div>

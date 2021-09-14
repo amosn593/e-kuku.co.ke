@@ -117,14 +117,17 @@ function Navbar() {
                   aria-labelledby="navbarDropdown"
                 >
                   <li>
-                    <a className="dropdown-item" href="links">
+                    <Link className="dropdown-item" to="/my-sells">
                       My Adverts
-                    </a>
+                    </Link>
+                    {/* <a className="dropdown-item" href="links">
+                      My Adverts
+                    </a> */}
                   </li>
                   <li>
-                    <a className="dropdown-item" href="links">
+                    {/* <Link className="dropdown-item" to="/my-sells">
                       My Profile
-                    </a>
+                    </Link> */}
                   </li>
                   <li>
                     <hr className="dropdown-divider" />

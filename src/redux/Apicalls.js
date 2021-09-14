@@ -83,7 +83,6 @@ export const login_user = async (body, dispatch, history) => {
     if (res.status === 200) {
       dispatch(login(res.data));
       dispatch(load_user());
-      // history.push("/");
     } else {
       dispatch(loginerror());
     }

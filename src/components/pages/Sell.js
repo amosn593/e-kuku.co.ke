@@ -87,22 +87,38 @@ function Sell() {
     formData.append("image", picture, picture.name);
 
     // posting data to backend
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: `JWT ${localStorage.getItem("access")}`,
-      },
-    };
-    try {
-      const res = await axios.post("/main/poultrycreate/", formData, config);
-      if (res.status === 201) {
+    if (localStorage.getItem("access")) {
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      };
+      try {
+        const res = await axios.post("/main/poultrycreate/", formData, config);
+        if (res.status === 201) {
+          setPosting(false);
+          history.push("/");
+        } else if (res.status === 401) {
+          setPosting(false);
+          setError(true);
+          setError_msg("Invalid Access Tokin, kindly login!!!");
+        } else {
+          setPosting(false);
+          setError(true);
+          setError_msg("Server, kindly try again later!!!");
+        }
+      } catch (err) {
         setPosting(false);
-        history.push("/");
-      } else {
-        setPosting(false);
+        setError(true);
+        setError_msg(
+          "Kindly Select correct values for county, subcounty, categories and fill all the fields!!!"
+        );
       }
-    } catch (err) {
+    } else {
       setPosting(false);
+      setError(true);
+      setError_msg("Kindly, login to post!!!");
     }
   };
 
@@ -113,7 +129,7 @@ function Sell() {
           Post Your Product For Free
         </p>
       </div>
-
+      {error && <p className="text-center login-error">{error_msg}</p>}
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-1 ">
         <div className="row">
           <div className="col-md-6 mt-3">
@@ -124,7 +140,7 @@ function Sell() {
               onChange={getsubcounties}
               required
             >
-              {/* <option defaultValue>Choose County...</option> */}
+              <option value="c">Choose County...</option>
               {counties.map((county) => (
                 <option key={county.id} value={county.id}>
                   {county.name}
@@ -135,7 +151,7 @@ function Sell() {
           <div className="col-md-6 mt-3 ">
             <label className="form-label fw-bold">Sub County</label>
             <select id="subcounty" className="form-select" required>
-              {/* <option defaultValue>Choose Subcounty...</option> */}
+              <option value="c">Choose Subcounty...</option>
               {subcounties.map((subcounty) => (
                 <option key={subcounty.id} value={subcounty.id}>
                   {subcounty.name}
@@ -147,7 +163,7 @@ function Sell() {
         <div className="col-md-3 mt-3">
           <label className="form-label fw-bold">Category</label>
           <select id="category" className="form-select required">
-            {/* <option defaultValue>Choose Category...</option> */}
+            <option value="c">Choose Category...</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}

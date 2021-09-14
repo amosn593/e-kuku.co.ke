@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { login_user } from "../../redux/Apicalls";
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 function Login() {
   document.title = "Login | E-KUKU";
   const [formData, setFormData] = useState({
@@ -38,6 +41,7 @@ function Login() {
 
   if (userloaded) {
     history.push("/");
+    // toast("login successful");
   }
 
   return (
