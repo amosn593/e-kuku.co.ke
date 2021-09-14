@@ -13,11 +13,11 @@ function Egg() {
 
   const getPosts = async () => {
     const response = await axios
-      .get("/poultryeggs")
+      .get("/main/poultryeggs")
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
-      
+
       setLoading(false);
     } else {
       setLoading(false);

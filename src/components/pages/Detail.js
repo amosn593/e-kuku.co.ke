@@ -10,12 +10,14 @@ function Detail() {
   const { id } = useParams();
 
   const updatePost = async () => {
-    await axios.post(`/poultryview/${id}`).catch((err) => console.log(err));
+    await axios
+      .post(`/main/poultryview/${id}`)
+      .catch((err) => console.log(err));
   };
 
   const getPost = async () => {
     const response = await axios
-      .get(`/poultrydetail/${id}`)
+      .get(`/main/poultrydetail/${id}`)
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPost(response.data);

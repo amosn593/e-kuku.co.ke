@@ -22,7 +22,7 @@ import { check_authenticated, load_user } from "./redux/Apicalls";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(check_authenticated());
+    // dispatch(check_authenticated());
     dispatch(load_user());
   }, []);
 

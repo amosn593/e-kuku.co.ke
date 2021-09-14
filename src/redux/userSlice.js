@@ -77,6 +77,7 @@ export const userSlice = createSlice({
       state.userinfo = null;
       state.load_pending = false;
       state.userloaded = false;
+      state.isAuthenticated = false;
       state.load_error = true;
       state.load_user_error = "Invalid Access Token!!!";
     },

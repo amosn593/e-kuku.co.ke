@@ -6,6 +6,8 @@ function SPinner() {
       <div className="spinner-border" role="status">
         <span className="visually-hidden">Loading...</span>
       </div>
+      <br />
+      <h4 className="my-3">Loading...</h4>
     </div>
   );
 }

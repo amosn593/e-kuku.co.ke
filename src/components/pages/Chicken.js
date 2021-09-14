@@ -5,7 +5,7 @@ import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 
 function Egg() {
-   document.title = "Chicken | E-KUKU";
+  document.title = "Chicken | E-KUKU";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,11 +13,11 @@ function Egg() {
 
   const getPosts = async () => {
     const response = await axios
-      .get("/poultrychicken")
+      .get("/main/poultrychicken")
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
-     
+
       setLoading(false);
     } else {
       setLoading(false);

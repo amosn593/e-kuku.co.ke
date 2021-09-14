@@ -13,7 +13,7 @@ function Home() {
 
   const getPosts = async () => {
     const response = await axios
-      .get("/latestpoultry")
+      .get("/main/latestpoultry")
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
@@ -34,7 +34,7 @@ function Home() {
   if (!loading) {
     if (posts.length > 0) {
       return (
-        <div className="row mx-2 mt-3">
+        <div className="row mx-2 my-4">
           {posts.map((post) => (
             <Post key={post.id} {...post} />
           ))}

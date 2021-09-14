@@ -6,6 +6,8 @@ import { axios } from "../inc/axios";
 function Sell() {
   document.title = "Sell | E-KUKU";
   const [posting, setPosting] = useState(false);
+  const [error, setError] = useState(false);
+  const [error_msg, setError_msg] = useState("");
   const [picture, setPicture] = useState(null);
   const [imageurl, setImageurl] = useState(null);
   const [counties, setCounties] = useState([]);
@@ -14,11 +16,15 @@ function Sell() {
 
   const user = useSelector((state) => state.user);
 
+  const id = user.userinfo.id;
+
+  console.log(id);
+
   const history = useHistory();
 
   const getcounties = async () => {
     try {
-      const response = await axios.get("/getcounty");
+      const response = await axios.get("/main/getcounty");
       if (response && response.data) {
         setCounties(response.data);
       } else {
@@ -32,7 +38,7 @@ function Sell() {
   const getsubcounties = async (e) => {
     const p = e.target.value;
     try {
-      const res = await axios.get(`/getsubcounty/${p}`);
+      const res = await axios.get(`/main/getsubcounty/${p}`);
       if (res && res.data) {
         setSubcounties(res.data);
       } else {
@@ -45,7 +51,7 @@ function Sell() {
 
   const getcategories = async () => {
     try {
-      const response = await axios.get("/getcategory");
+      const response = await axios.get("/main/getcategory");
       if (response && response.data) {
         setCategories(response.data);
       } else {
@@ -88,7 +94,7 @@ function Sell() {
       },
     };
     try {
-      const res = await axios.post("/poultrycreate/", formData, config);
+      const res = await axios.post("/main/poultrycreate/", formData, config);
       if (res.status === 201) {
         setPosting(false);
         history.push("/");

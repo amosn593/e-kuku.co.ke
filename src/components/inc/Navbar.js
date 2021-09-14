@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userSlice";
+import Logo from "../../images/logo.png";
 
 function Navbar() {
   const { userloaded, isAuthenticated, userinfo } = useSelector(
@@ -20,9 +21,13 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar">
       <div className="container-fluid">
-        <Link className="navbar-brand lead d-flex" to="/">
+        <Link className="navbar-brand lead d-flex mybrand" to="/">
           {/* <h4 className="m-1 lead ">E-KUKU</h4> */}
-          E-KUKU
+          <img
+            src={Logo}
+            alt="E-kuku Logo"
+            className="d-inline-block align-text-top mylogo"
+          />
         </Link>
         <button
           className="navbar-toggler"
@@ -99,7 +104,7 @@ function Navbar() {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"
-                  href="#"
+                  href="links"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -112,12 +117,12 @@ function Navbar() {
                   aria-labelledby="navbarDropdown"
                 >
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="links">
                       My Adverts
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="links">
                       My Profile
                     </a>
                   </li>

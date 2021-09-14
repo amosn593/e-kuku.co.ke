@@ -13,11 +13,11 @@ function Equipments() {
 
   const getPosts = async () => {
     const response = await axios
-      .get("/poultryfeed")
+      .get("/main/poultryfeed")
       .catch((err) => console.log(err));
     if (response && response.data) {
       setPosts(response.data);
-      
+
       setLoading(false);
     } else {
       setLoading(false);
