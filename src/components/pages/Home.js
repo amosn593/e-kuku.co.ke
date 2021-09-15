@@ -3,23 +3,22 @@ import Post from "./Post";
 import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
+import Search from "../inc/Search";
 
 function Home() {
   document.title = "Home | E-KUKU";
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // const noPosts = !posts;
+  const [loading, setLoading] = useState(false);
 
   const getPosts = async () => {
-    const response = await axios
-      .get("/main/latestpoultry")
-      .catch((err) => console.log(err));
-    if (response && response.data) {
-      setPosts(response.data);
-
-      setLoading(false);
-    } else {
+    setLoading(true);
+    try {
+      const response = await axios.get("/main/latestpoultry");
+      if (response && response.data) {
+        setPosts(response.data);
+        setLoading(false);
+      }
+    } catch (err) {
       setLoading(false);
     }
   };
@@ -28,20 +27,24 @@ function Home() {
     getPosts();
   }, []);
 
-  // console.log(posts);
-  // console.log(loading);
-
   if (!loading) {
     if (posts.length > 0) {
       return (
-        <div className="row mx-2 my-4">
-          {posts.map((post) => (
-            <Post key={post.id} {...post} />
-          ))}
+        <div>
+          <Search />
+          <div className="row mx-2 my-4">
+            {posts.map((post) => (
+              <Post key={post.id} {...post} />
+            ))}
+          </div>
         </div>
       );
     } else {
-      return <NoPosts />;
+      return (
+        <div>
+          <NoPosts />
+        </div>
+      );
     }
   } else {
     return <Spinner />;

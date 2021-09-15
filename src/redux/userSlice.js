@@ -22,6 +22,7 @@ export const userSlice = createSlice({
     signup_error_msg: "",
     signup_pending: null,
     signup: null,
+    status: 0
   },
 
   reducers: {
@@ -105,6 +106,7 @@ export const userSlice = createSlice({
       state.isAuthenticated = false;
     },
     signup_error: (state, action) => {
+      state.status = action.payload;
       state.signup_pending = false;
       state.signup = false;
       state.signup_error = true;

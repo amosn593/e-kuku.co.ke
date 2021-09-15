@@ -79,7 +79,7 @@ function Navbar() {
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/poultry_structures"
               >
-                Poultry Structures
+                Poultry Equipments
               </Link>
             </li>
             <li className="nav-item">

@@ -19,13 +19,13 @@ function Register() {
   const [formData, setFormData] = useState({
     email: "",
     user_name: "",
-    first_name: "",
-    last_name: "",
+    full_name: "",
+    phone: "",
     password: "",
     re_password: "",
   });
 
-  const { email, user_name, first_name, last_name, password, re_password } =
+  const { email, user_name, full_name, phone, password, re_password } =
     formData;
 
   const onChange = (e) =>
@@ -34,8 +34,8 @@ function Register() {
   const data = {
     email: email,
     user_name: user_name,
-    first_name: first_name,
-    last_name: last_name,
+    full_name: full_name,
+    phone: phone,
     password: password,
     re_password: re_password,
   };
@@ -77,21 +77,22 @@ function Register() {
           <form onSubmit={(e) => registeruser(e)} className="mt-3">
             <div className="row my-2">
               <div className="col-md-6">
-                <label className="form-label">First Name</label>
+                <label className="form-label">Full Name</label>
                 <input
                   type="text"
-                  name="first_name"
+                  name="full_name"
                   className="form-control"
                   required
                   onChange={(e) => onChange(e)}
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label">Last Name</label>
+                <label className="form-label">Mobile Number</label>
                 <input
-                  type="text"
-                  name="last_name"
+                  type="number"
+                  name="phone"
                   className="form-control"
+                  placeholder="0700000000"
                   required
                   onChange={(e) => onChange(e)}
                 />
@@ -113,9 +114,9 @@ function Register() {
                 <input
                   type="text"
                   name="user_name"
-                  maxLength="7"
+                  maxLength="6"
                   className="form-control"
-                  placeholder="Max Length 8 "
+                  placeholder="Max Length 6 "
                   required
                   onChange={(e) => onChange(e)}
                 />
@@ -146,6 +147,15 @@ function Register() {
                   required
                   onChange={(e) => onChange(e)}
                 />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12 my-2 py-2">
+                <p className="text-center">
+                  <strong className="mx-2">Note</strong>By registering you agree
+                  and accepts our terms and conditions, and that you have read
+                  our privacy policy.
+                </p>
               </div>
             </div>
 
