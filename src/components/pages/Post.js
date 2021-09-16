@@ -15,7 +15,7 @@ function Post(props) {
         <img
           src={props.get_image}
           className="card-img-top mycardimg"
-          alt="..."
+          alt="poultry image"
         ></img>
         <div className="card-body mycardbody">
           <p className="card-title m-0">{props.title}</p>

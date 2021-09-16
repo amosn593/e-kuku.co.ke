@@ -9,6 +9,7 @@
 
 .main-content {
   position: relative;
+  top: 0;
   min-height: 100vh;
 }
 
@@ -47,8 +48,9 @@ body {
 .mynavbar {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
   font-size: 12px !important;
-  position: fixed !important;
-  top: 0px;
+  position: sticky !important;
+  position: -webkit-sticky;
+  top: 0;
   width: 100%;
   margin: 0px !important;
   padding: 0px !important;
@@ -125,9 +127,18 @@ body {
   color: aliceblue;
 }
 
+@media screen and (min-width: 560px) {
+  .mynavbar {
+    position: fixed !important;
+    height: 100px !important;
+    top: 0px;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .mynavbar {
     position: fixed !important;
+    height: auto !important;
     top: 0px;
   }
   .page-content {

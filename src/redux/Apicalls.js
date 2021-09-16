@@ -101,7 +101,7 @@ export const signup_user = async (body, dispatch) => {
 
   try {
     const res = await axios.post("/auth/users/", body, config);
-    if (res.status === 201 || res.status === 500) {
+    if (res.status === 201) {
       console.log(res.status);
       dispatch(signup());
     } else {

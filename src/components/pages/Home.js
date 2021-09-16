@@ -32,7 +32,7 @@ function Home() {
       return (
         <div>
           <Search />
-          <div className="row mx-2 my-4">
+          <div className="row mx-2 my-2">
             {posts.map((post) => (
               <Post key={post.id} {...post} />
             ))}

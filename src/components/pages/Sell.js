@@ -16,10 +16,6 @@ function Sell() {
 
   const user = useSelector((state) => state.user);
 
-  const id = user.userinfo.id;
-
-  console.log(id);
-
   const history = useHistory();
 
   const getcounties = async () => {

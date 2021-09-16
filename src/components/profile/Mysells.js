@@ -1,21 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { axios } from "../inc/axios";
+import Mypost from "./Mypost";
+import Spinner from "../inc/Spinner";
 
 function Mysells() {
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-4 text-center">image</div>
-        <div className="col-md-4 text-center">description</div>
-        <div className="col-md-4 text-center">
-          <button className="btn btn-primary my-2">Sponsor Advert</button>
-          <br />
-          <button className="btn btn-info my-2">Update Advert</button>
-          <br />
-          <button className="btn btn-danger my-2">Delete Advert</button>
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const myadverts = async () => {
+    setLoading(true);
+    if (localStorage.getItem("access")) {
+      const config = {
+        headers: {
+          "content-type": "application/json",
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      };
+      try {
+        const response = await axios.get("/main/mypoultry", config);
+        if (response && response.data) {
+          setPosts(response.data);
+          setLoading(false);
+        }
+      } catch (err) {
+        setLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    myadverts();
+  }, []);
+
+  if (!loading) {
+    if (posts.length > 0) {
+      return (
+        <div>
+          <div className="row mx-2 my-2">
+            {posts.map((post) => (
+              <Mypost key={post.id} {...post} />
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
-  );
+      );
+    } else {
+      return (
+        <div>
+          <p className="text-center my-4 py-3">
+            You have not posted any advert yet!!!
+          </p>
+        </div>
+      );
+    }
+  } else {
+    return <Spinner />;
+  }
 }
 
 export default Mysells;
