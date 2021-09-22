@@ -47,20 +47,20 @@ function Detail() {
           </div>
           <div className="col-md-6 mt-2">
             <div className="bg-light ">
-              <h4 className="text-center btn-info py-3">{post.title}</h4>
+              <h5 className="text-center btn-info py-3">{post.title}</h5>
               <p className="p-2">Price: {post.price}</p>
             </div>
             <div className="bg-light">
-              <h4 className="text-center btn-secondary py-3">
+              <h5 className="text-center btn-secondary py-3">
                 Contact Details
-              </h4>
+              </h5>
               <p className="p-2">Contact: {post.contact}</p>
               <p className="p-2">County: {post.get_county}</p>
               <p className="p-2">Sub County: {post.get_subcounty}</p>
               <p className="p-2">Location: {post.location}</p>
             </div>
             <div className="bg-light">
-              <h4 className="text-center btn-danger py-3">Safety tips</h4>
+              <h5 className="text-center btn-danger py-3">Safety tips</h5>
               <ul>
                 <li>Pay only after receiving the product</li>
                 <li>Do not pay in advance</li>

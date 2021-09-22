@@ -23,8 +23,7 @@ function Mypost(props) {
         <div className="col-md-4 text-center">
           <button className="btn btn-primary my-2">Sponsor Advert</button>
           <br />
-          <button className="btn btn-info my-2">Update Advert</button>
-          <br />
+
           <button className="btn btn-danger my-2">Delete Advert</button>
         </div>
       </div>

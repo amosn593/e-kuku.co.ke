@@ -18,8 +18,8 @@ function Post(props) {
           alt="poultry image"
         ></img>
         <div className="card-body mycardbody">
-          <p className="card-title m-0">{props.title}</p>
-          <p className="card-text m-0">Price: {props.price}</p>
+          <p className="card-title m-0 px-0 hidden">{props.title}</p>
+          <p className="card-text m-0 px-0 hidden">{props.price}</p>
           <Link className="btn btn-dark m-0 " to={`/product/${props.id}`}>
             View Details
           </Link>

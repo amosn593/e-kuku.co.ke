@@ -106,10 +106,7 @@ function Sell() {
         }
       } catch (err) {
         setPosting(false);
-        setError(true);
-        setError_msg(
-          "Kindly Select correct values for county, subcounty, categories and fill all the fields!!!"
-        );
+        history.push("/");
       }
     } else {
       setPosting(false);
