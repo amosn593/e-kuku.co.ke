@@ -19,6 +19,7 @@ import ResetPasswordEmail from "./components/profile/ResetPasswordEmail";
 import Mysells from "./components/profile/Mysells";
 import Terms from "./components/inc/Terms";
 import Privacy from "./components/inc/Privacy";
+import About from "./components/inc/About";
 import { useDispatch } from "react-redux";
 import { check_authenticated, load_user } from "./redux/Apicalls";
 
@@ -65,6 +66,7 @@ function App() {
             <Route exct path="/my-sells" exact component={Mysells} />
             <Route exct path="/terms-and-conditions" exact component={Terms} />
             <Route exct path="/privacy-policy" exact component={Privacy} />
+            <Route exct path="/about-e-kuku" exact component={About} />
             <Route component={NotFound} />
           </Switch>
         </div>

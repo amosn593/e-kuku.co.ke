@@ -126,14 +126,14 @@ function Sell() {
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-1 ">
         <div className="row">
           <div className="col-md-6 mt-3">
-            <label className="form-label fw-bold">County</label>
+            <label className="form-label fw-bold">Region</label>
             <select
               id="county"
               className="form-select"
               onChange={getsubcounties}
               required
             >
-              <option value="c">Choose County...</option>
+              <option value="c">Choose Region...</option>
               {counties.map((county) => (
                 <option key={county.id} value={county.id}>
                   {county.name}
@@ -142,9 +142,9 @@ function Sell() {
             </select>
           </div>
           <div className="col-md-6 mt-3 ">
-            <label className="form-label fw-bold">Sub County</label>
+            <label className="form-label fw-bold">Sub Region</label>
             <select id="subcounty" className="form-select" required>
-              <option value="c">Choose Subcounty...</option>
+              <option value="c">Choose Sub Region...</option>
               {subcounties.map((subcounty) => (
                 <option key={subcounty.id} value={subcounty.id}>
                   {subcounty.name}

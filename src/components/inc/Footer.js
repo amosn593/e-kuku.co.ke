@@ -7,7 +7,7 @@ function Footer() {
       <div className="row bg-success w-100 py-4">
         <div className="col-md-3 mt-3">
           <p className="text-center text-white ">
-            <Link className="text-white mx-1" to="/privacy-policy">
+            <Link className="text-white mx-1" to="/about-e-kuku">
               About Us
             </Link>
             <Link className="text-white mx-1" to="/terms-and-conditions">

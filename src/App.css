@@ -133,6 +133,16 @@ body {
   color: aliceblue;
 }
 
+/* search form */
+.search-bg {
+  background-color: #0dcaf0;
+}
+.search-header {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
 @media screen and (min-width: 560px) {
   .mynavbar {
     position: fixed !important;
