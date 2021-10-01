@@ -79,6 +79,7 @@ function Sell() {
     formData.append("price", e.target.price.value);
     formData.append("description", e.target.description.value);
     formData.append("contact", e.target.contact.value);
+    formData.append("business_name", e.target.business_name.value);
     formData.append("location", e.target.location.value);
     formData.append("image", picture, picture.name);
 
@@ -212,20 +213,32 @@ function Sell() {
             <img className="" src={imageurl && imageurl} alt=""></img>
           </div>
         </div>
-        <div className="col-md-6 mt-3">
-          <label className="form-label fw-bold">Contact Number</label>
+        <div className="col-md-4 mt-3">
+          <label className="form-label fw-bold">Business Number</label>
           <input
             type="number"
             className="form-control"
             id="contact"
+            minLength="9"
             maxLength="15"
-            placeholder="Contact Number, 07-------"
+            placeholder="Contact Number, 0700000000"
             required
           />
         </div>
 
-        <div className="col-md-6 mt-3">
-          <label className="form-label fw-bold">Location</label>
+        <div className="col-md-4 mt-3">
+          <label className="form-label fw-bold">Business Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="business_name"
+            maxLength="15"
+            placeholder="Feeds Suppliers Ltd"
+            required
+          />
+        </div>
+        <div className="col-md-4 mt-3">
+          <label className="form-label fw-bold">Business Location</label>
           <input
             type="text"
             className="form-control"

@@ -1,29 +1,15 @@
 import React, { useState } from "react";
-// import { Redirect } from "react-router";
-// import SearchResult from "../pages/SearchResult";
-import { axios } from "./axios";
+import { useHistory } from "react-router";
 
 function Search() {
-  const [searching, setSearching] = useState(false);
   const [search, setSearch] = useState("");
-  const [posts, setPosts] = useState([]);
+
+  const history = useHistory();
 
   const post = async (e) => {
     e.preventDefault();
-    setSearching(true);
-    // Redirect <SearchResult/>
-    try {
-      const response = await axios.get(`/main/poultrysearch/${search}`);
-      if (response && response.data) {
-        setPosts(response.data);
-        setSearching(false);
-        console.log(response);
-        console.log(response.data);
-        console.log(posts);
-      }
-    } catch (err) {
-      setSearching(false);
-    }
+    setSearch("");
+    history.push(`/poultry_search/${search}`);
   };
   return (
     <div className="container-fluid py-3 search-bg">
@@ -42,6 +28,7 @@ function Search() {
               onChange={(e) => setSearch(e.target.value)}
               value={search}
               placeholder="Type your search here!!!"
+              required
             />
 
             <button type="submit" className="btn btn-primary mx-2">

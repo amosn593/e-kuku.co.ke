@@ -77,7 +77,9 @@ function Detail() {
   } else {
     return (
       <div>
-        <h6 className="text-muted text-center mt-4">Product not found!!!</h6>
+        <h6 className="text-muted text-center my-4 py-4">
+          Poultry not found!!!
+        </h6>
       </div>
     );
   }
