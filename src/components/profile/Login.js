@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 function Login() {
   document.title = "Login | E-KUKU";
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,6 +42,7 @@ function Login() {
 
   if (userloaded) {
     history.push("/");
+
     // toast("login successful");
   }
 

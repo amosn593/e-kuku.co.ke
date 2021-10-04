@@ -13,6 +13,8 @@ import Detail from "./components/pages/Detail";
 import Feed from "./components/pages/Feed";
 import SearchResult from "./components/pages/SearchResult";
 import SellNav from "./components/pages/SellNav";
+import Sell from "./components/pages/Sell";
+import Protected from "./components/profile/Protected";
 import Login from "./components/profile/Login";
 import Register from "./components/profile/Register";
 import Resetpassword from "./components/profile/Resetpassword";
@@ -23,8 +25,11 @@ import Privacy from "./components/inc/Privacy";
 import About from "./components/inc/About";
 import { useDispatch } from "react-redux";
 import { check_authenticated, load_user } from "./redux/Apicalls";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { isAuthenticated } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(check_authenticated());
@@ -49,7 +54,8 @@ function App() {
               exact
               component={SearchResult}
             />
-            <Route exct path="/sell" exact component={SellNav} />
+            {/* <Route exct path="/sell" exact component={SellNav} /> */}
+
             <Route
               exct
               path="/poultry_structures"
@@ -58,6 +64,13 @@ function App() {
             />
             <Route exct path="/sign-in" exact component={Login} />
             <Route exct path="/sign-up" exact component={Register} />
+            <Protected
+              exct
+              path="/sell"
+              exact
+              component={Sell}
+              isAuthenticated={isAuthenticated}
+            />
             <Route
               exct
               path="/Reset-Password"

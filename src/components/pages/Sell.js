@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import { axios } from "../inc/axios";
 
@@ -16,7 +16,7 @@ function Sell() {
 
   // const user = useSelector((state) => state.user);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const getcounties = async () => {
     try {
@@ -95,7 +95,7 @@ function Sell() {
         const res = await axios.post("/main/poultrycreate/", formData, config);
         if (res.status === 201) {
           setPosting(false);
-          history.push("/");
+          <Redirect to="/" />;
         } else if (res.status === 401) {
           setPosting(false);
           setError(true);
@@ -107,7 +107,7 @@ function Sell() {
         }
       } catch (err) {
         setPosting(false);
-        history.push("/");
+        <Redirect to="/" />;
       }
     } else {
       setPosting(false);
@@ -233,7 +233,7 @@ function Sell() {
             className="form-control"
             id="business_name"
             maxLength="15"
-            placeholder="Feeds Suppliers Ltd"
+            placeholder="e.g Feeds Suppliers Ltd"
             required
           />
         </div>

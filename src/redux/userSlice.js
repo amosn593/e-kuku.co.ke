@@ -22,7 +22,7 @@ export const userSlice = createSlice({
     signup_error_msg: "",
     signup_pending: null,
     signup: null,
-    status: 0
+    status: 0,
   },
 
   reducers: {
@@ -38,7 +38,6 @@ export const userSlice = createSlice({
       state.refresh = action.payload.refresh;
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
-      state.isAuthenticated = true;
       state.login_pending = false;
       state.loggedin = true;
     },
