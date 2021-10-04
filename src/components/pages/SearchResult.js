@@ -46,7 +46,6 @@ function SearchResult() {
     } else {
       return (
         <div>
-          <Search />
           <NoPosts />
         </div>
       );
@@ -54,7 +53,6 @@ function SearchResult() {
   } else {
     return (
       <div>
-        <Search />
         <Spinner />
       </div>
     );

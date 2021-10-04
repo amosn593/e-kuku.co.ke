@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userSlice";
-import Logo from "../../images/logo.png";
+import Logo from "./images/logo.png";
 
 function Navbar() {
   const { userloaded, isAuthenticated, userinfo } = useSelector(

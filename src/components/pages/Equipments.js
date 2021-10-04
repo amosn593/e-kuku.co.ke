@@ -15,10 +15,11 @@ function Equipments() {
   const getPosts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("/main/poultryfeed");
+      const response = await axios.get("/main/poultrystructure");
       if (response && response.data) {
         setPosts(response.data);
         setLoading(false);
+        console.log(response.data);
       }
     } catch (err) {
       setLoading(false);

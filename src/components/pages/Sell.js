@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { axios } from "../inc/axios";
 
 function Sell() {
@@ -14,7 +14,7 @@ function Sell() {
   const [subcounties, setSubcounties] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
 
   const history = useHistory();
 
