@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import { login_user } from "../../redux/Apicalls";
-import "react-toastify/dist/ReactToastify.css";
 
-toast.configure();
 function Login() {
   document.title = "Login | E-KUKU";
 
@@ -36,14 +32,11 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     login_user(body, dispatch);
   };
 
   if (userloaded) {
     history.push("/");
-
-    // toast("login successful");
   }
 
   return (
@@ -82,9 +75,8 @@ function Login() {
                 onChange={(e) => onChange(e)}
               />
             </div>
-            <div className="mb-3 error">{}</div>
             <button
-              disabled={(login_pending || load_pending) && !error}
+              disabled={(login_pending && load_pending) && !error}
               type="submit"
               className="btn btn-primary sign-in mx-1 py-1"
             >

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import { axios } from "../inc/axios";
-// import Mypost from "./Mypost";
 import Spinner from "../inc/Spinner";
 
 function Mysells() {
@@ -10,14 +7,6 @@ function Mysells() {
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [id, setId] = useState("");
-
-  const history = useHistory();
-
-  const { userloaded, loggedin } = useSelector((state) => state.user);
-
-  // if (!userloaded && !loggedin) {
-  //   history.push("/sign-in");
-  // }
 
   const myadverts = async () => {
     setLoading(true);

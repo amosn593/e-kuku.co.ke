@@ -19,7 +19,6 @@ function Equipments() {
       if (response && response.data) {
         setPosts(response.data);
         setLoading(false);
-        console.log(response.data);
       }
     } catch (err) {
       setLoading(false);

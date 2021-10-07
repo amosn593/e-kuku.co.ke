@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { axios } from "../inc/axios";
 
 function Sell() {
   document.title = "Sell | E-KUKU";
+  const history = useHistory();
+
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState(false);
   const [error_msg, setError_msg] = useState("");
@@ -13,10 +14,6 @@ function Sell() {
   const [counties, setCounties] = useState([]);
   const [subcounties, setSubcounties] = useState([]);
   const [categories, setCategories] = useState([]);
-
-  // const user = useSelector((state) => state.user);
-
-  // const history = useHistory();
 
   const getcounties = async () => {
     try {
@@ -27,7 +24,7 @@ function Sell() {
         console.log("");
       }
     } catch (err) {
-      console.log("");
+      console.log(err);
     }
   };
 
@@ -41,7 +38,7 @@ function Sell() {
         console.log("");
       }
     } catch (err) {
-      console.log("");
+      console.log(err);
     }
   };
 
@@ -54,7 +51,7 @@ function Sell() {
         console.log("");
       }
     } catch (err) {
-      console.log("");
+      console.log(err);
     }
   };
 
@@ -95,7 +92,7 @@ function Sell() {
         const res = await axios.post("/main/poultrycreate/", formData, config);
         if (res.status === 201) {
           setPosting(false);
-          <Redirect to="/" />;
+          history.push("/");
         } else if (res.status === 401) {
           setPosting(false);
           setError(true);
@@ -107,7 +104,10 @@ function Sell() {
         }
       } catch (err) {
         setPosting(false);
-        <Redirect to="/" />;
+        setError(true);
+        setError_msg("Server, kindly try again later!!!");
+        console.log(err);
+        history.push("/");
       }
     } else {
       setPosting(false);

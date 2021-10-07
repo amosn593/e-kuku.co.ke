@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect, useLocation } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 function Protected({ isAuthenticated, component: Component, ...rest }) {
   return (

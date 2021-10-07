@@ -12,7 +12,6 @@ import Home from "./components/pages/Home";
 import Detail from "./components/pages/Detail";
 import Feed from "./components/pages/Feed";
 import SearchResult from "./components/pages/SearchResult";
-import SellNav from "./components/pages/SellNav";
 import Sell from "./components/pages/Sell";
 import Protected from "./components/profile/Protected";
 import Login from "./components/profile/Login";
@@ -54,7 +53,6 @@ function App() {
               exact
               component={SearchResult}
             />
-            {/* <Route exct path="/sell" exact component={SellNav} /> */}
 
             <Route
               exct
@@ -83,7 +81,13 @@ function App() {
               exact
               component={ResetPasswordEmail}
             />
-            <Route exct path="/my-sells" exact component={Mysells} />
+            <Protected
+              exct
+              path="/my-sells"
+              exact
+              component={Mysells}
+              isAuthenticated={isAuthenticated}
+            />
             <Route exct path="/terms-and-conditions" exact component={Terms} />
             <Route exct path="/privacy-policy" exact component={Privacy} />
             <Route exct path="/about-e-kuku" exact component={About} />

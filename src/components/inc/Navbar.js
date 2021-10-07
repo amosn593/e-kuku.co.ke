@@ -110,7 +110,7 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Hello, {userinfo.user_name}
+                  My Account
                 </a>
                 <ul
                   className="dropdown-menu dropdown-menu-lg-end"
@@ -120,14 +120,9 @@ function Navbar() {
                     <Link className="dropdown-item" to="/my-sells">
                       My Adverts
                     </Link>
-                    {/* <a className="dropdown-item" href="links">
-                      My Adverts
-                    </a> */}
+                    
                   </li>
                   <li>
-                    {/* <Link className="dropdown-item" to="/my-sells">
-                      My Profile
-                    </Link> */}
                   </li>
                   <li>
                     <hr className="dropdown-divider" />

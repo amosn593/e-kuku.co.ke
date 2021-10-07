@@ -23,7 +23,9 @@ function Footer() {
             &copy; {new Date().getFullYear()} E-KUKU | All Rights Reserved
           </p>
         </div>
-        <div className="col-md-3 mt-3"></div>
+        <div className="col-md-3 text-center text-white mt-3">
+          Contact: info@e-kuku.co.ke
+        </div>
       </div>
     </div>
   );
