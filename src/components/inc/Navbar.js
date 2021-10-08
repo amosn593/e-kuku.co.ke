@@ -5,9 +5,7 @@ import { logout } from "../../redux/userSlice";
 import Logo from "./images/logo.png";
 
 function Navbar() {
-  const { userloaded, isAuthenticated, userinfo } = useSelector(
-    (state) => state.user
-  );
+  const { userloaded, isAuthenticated } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -79,7 +77,7 @@ function Navbar() {
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/poultry_structures"
               >
-                Poultry Equipments
+                Poultry Facilities
               </Link>
             </li>
             <li className="nav-item">
@@ -120,10 +118,8 @@ function Navbar() {
                     <Link className="dropdown-item" to="/my-sells">
                       My Adverts
                     </Link>
-                    
                   </li>
-                  <li>
-                  </li>
+                  <li></li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>

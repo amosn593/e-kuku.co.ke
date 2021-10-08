@@ -119,6 +119,19 @@ body {
   overflow: hidden !important;
   width: 100% !important;
   height: 25px !important;
+  font-size: 14px;
+}
+
+.view-details {
+  font-size: 14px !important;
+}
+
+.view-details:hover {
+  background-color: #ffc107 !important;
+  font-size: 14px !important;
+  outline: none !important;
+  border: none !important;
+  color: black !important;
 }
 
 .error {
@@ -153,12 +166,12 @@ body {
 
 @media screen and (max-width: 560px) {
   .mynavbar {
-    position: fixed !important;
-    height: auto !important;
-    top: 0px;
+    position: relative !important;
+    /* height: auto !important; */
+    /* top: 0px; */
   }
   .page-content {
-    margin-top: 100px !important;
+    margin-top: 0px !important;
     margin-bottom: 60px !important;
     padding-bottom: 100px !important;
   }

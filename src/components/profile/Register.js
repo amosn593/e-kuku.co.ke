@@ -46,7 +46,6 @@ function Register() {
 
   const dispatch = useDispatch();
 
-  //   console.log(email);
   const registeruser = async (e) => {
     e.preventDefault();
     if (password === re_password) {

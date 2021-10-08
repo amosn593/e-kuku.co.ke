@@ -3,6 +3,7 @@ import React from "react";
 function About() {
   return (
     <div className="row mx-2 my-4 py-4">
+      <h4 className="text-center">Your No. 1 Platform For all your Poultry Needs!</h4>
       <div className="col-md-6 px-2">
         <h4>How to buy on E-KUKU?</h4>
         <h6>1. Search for the item.</h6>

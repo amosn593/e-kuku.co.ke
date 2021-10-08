@@ -21,11 +21,8 @@ function Sell() {
       if (response && response.data) {
         setCounties(response.data);
       } else {
-        console.log("");
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const getsubcounties = async (e) => {
@@ -35,11 +32,8 @@ function Sell() {
       if (res && res.data) {
         setSubcounties(res.data);
       } else {
-        console.log("");
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const getcategories = async () => {
@@ -48,11 +42,8 @@ function Sell() {
       if (response && response.data) {
         setCategories(response.data);
       } else {
-        console.log("");
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {

@@ -21,7 +21,7 @@ function Post(props) {
           <p className="card-title m-0 px-0 hidden">{props.title}</p>
           <p className="card-text m-0 px-0 hidden">{props.price}</p>
           <Link
-            className="btn btn-dark m-0 "
+            className="btn btn-dark m-0 view-details "
             to={`/poultry_details/${props.id}`}
           >
             View Details

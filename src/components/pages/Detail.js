@@ -10,18 +10,18 @@ function Detail() {
   const { id } = useParams();
 
   const updatePost = async () => {
-    await axios
-      .post(`/main/poultryview/${id}`)
-      .catch((err) => console.log(err));
+    try {
+      await axios.post(`/main/poultryview/${id}`);
+    } catch (err) {}
   };
 
   const getPost = async () => {
-    const response = await axios
-      .get(`/main/poultrydetail/${id}`)
-      .catch((err) => console.log(err));
-    if (response && response.data) {
-      setPost(response.data);
-    }
+    try {
+      const response = await axios.get(`/main/poultrydetail/${id}`);
+      if (response && response.data) {
+        setPost(response.data);
+      }
+    } catch (err) {}
   };
 
   useEffect(() => {

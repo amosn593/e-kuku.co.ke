@@ -33,7 +33,6 @@ export const check_authenticated = () => async (dispatch) => {
         dispatch(authenticate_user());
       } else {
         dispatch(authenticate_error());
-        // get refresh token
       }
     } catch (err) {
       dispatch(authenticate_error());
@@ -102,10 +101,8 @@ export const signup_user = async (body, dispatch) => {
   try {
     const res = await axios.post("/auth/users/", body, config);
     if (res.status === 201) {
-      console.log(res.status);
       dispatch(signup());
     } else {
-      console.log(res.status);
       dispatch(signup_error(res.status));
     }
   } catch (err) {
