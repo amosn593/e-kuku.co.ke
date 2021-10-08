@@ -6,7 +6,6 @@ function Mysells() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [id, setId] = useState("");
 
   const myadverts = async () => {
     setLoading(true);
@@ -29,36 +28,37 @@ function Mysells() {
     }
   };
 
-  const delete_my_post = async (e) => {
-    e.preventDefault();
-    // setDeleting(true);
-    // setId(e.target.delete_id.value);
-    console.log("clicked");
-    console.log(id);
-    // if (localStorage.getItem("access")) {
-    //   const config = {
-    //     headers: {
-    //       "content-type": "application/json",
-    //       Authorization: `JWT ${localStorage.getItem("access")}`,
-    //     },
-    //   };
-    //   try {
-    //     const response = await axios.delete(
-    //       `/main/mypoultrydelete/${id}`,
-    //       config
-    //     );
-    //     if (response.status === 204) {
-    //       setDeleting(false);
-    //     }
-    //   } catch (err) {
-    //     setDeleting(false);
-    //   }
-    // }
-  };
-
   useEffect(() => {
     myadverts();
   }, []);
+
+  const delete_my_post = async (id) => {
+    setDeleting(true);
+    if (localStorage.getItem("access")) {
+      const config = {
+        headers: {
+          "content-type": "application/json",
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      };
+      try {
+        const response = await axios.delete(
+          `/main/mypoultrydelete/${id}`,
+          config
+        );
+        if (response.status === 204) {
+          const del = posts.filter((post) => id !== post.id);
+          setPosts(del);
+          setDeleting(false);
+          alert("Post Deleted Successfully!!!");
+        }
+      } catch (err) {
+        setDeleting(false);
+      }
+    } else {
+      alert("You have been LoggedOut, Kindly Login Again!!!");
+    }
+  };
 
   if (!loading) {
     if (posts.length > 0) {
@@ -66,7 +66,7 @@ function Mysells() {
         <div>
           <div className="row mx-2 my-2">
             <div className="container my-3 py-3">
-              {posts.map((post, index = post.id) => {
+              {posts.map((post) => {
                 return (
                   <div key={post.id} className="row">
                     <div className="col-md-4 text-center my-2 py-2">
@@ -105,12 +105,7 @@ function Mysells() {
 
                       <button
                         disabled={deleting}
-                        id="delete_id"
-                        name="delete_id"
-                        value={post.id}
-                        // onLoad={setId(post.id)}
-                        onClick={delete_my_post}
-                        type="submit"
+                        onClick={() => delete_my_post(post.id)}
                         className="btn btn-danger my-2"
                       >
                         Delete Advert

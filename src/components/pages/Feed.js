@@ -35,9 +35,9 @@ function Egg() {
         <div>
           <Search />
           <div className="row mx-2 mt-3">
-            {posts.map((post) => (
-              <Post key={post.id} {...post} />
-            ))}
+            {posts.map((post) => {
+              return <Post key={post.id} {...post} />;
+            })}
           </div>
         </div>
       );
