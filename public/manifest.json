@@ -3,17 +3,17 @@
   "name": "E-KUKU",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "favicon.ico",
       "sizes": "150x150 ",
       "type": "image/png"
     },
     {
-      "src": "favicon.png",
+      "src": "kuku.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon.png",
+      "src": "kuku.png",
       "type": "image/png",
       "sizes": "512x512"
     }

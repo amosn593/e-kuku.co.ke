@@ -20,7 +20,6 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar">
       <div className="container-fluid">
         <Link className="navbar-brand lead d-flex mybrand" to="/">
-          {/* <h4 className="m-1 lead ">E-KUKU</h4> */}
           <img
             src={Logo}
             alt="E-kuku Logo"
@@ -69,7 +68,7 @@ function Navbar() {
                 className="nav-link btn-success text-white rounded-pill text-center"
                 to="/chicken_feeds"
               >
-                Chicken Feeds
+                Feeds & Medicines
               </Link>
             </li>
             <li className="nav-item">
