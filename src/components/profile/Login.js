@@ -27,15 +27,16 @@ function Login() {
 
   const history = useHistory();
 
-  const { login_pending, load_pending, error, userloaded, login_user_error } =
-    useSelector((state) => state.user);
+  const { login_pending, error, loggedin, login_user_error } = useSelector(
+    (state) => state.user
+  );
 
   const onSubmit = async (e) => {
     e.preventDefault();
     login_user(body, dispatch);
   };
 
-  if (userloaded) {
+  if (loggedin) {
     history.push("/");
   }
 
@@ -76,7 +77,7 @@ function Login() {
               />
             </div>
             <button
-              disabled={(login_pending && load_pending) && !error}
+              disabled={login_pending && !error}
               type="submit"
               className="btn btn-primary sign-in mx-1 py-1"
             >

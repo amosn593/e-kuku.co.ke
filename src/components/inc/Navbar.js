@@ -5,7 +5,7 @@ import { logout } from "../../redux/userSlice";
 import Logo from "./images/logo.png";
 
 function Navbar() {
-  const { userloaded, isAuthenticated } = useSelector((state) => state.user);
+  const { loggedin, isAuthenticated } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -87,7 +87,7 @@ function Navbar() {
                 SELL
               </Link>
             </li>
-            {!isAuthenticated && !userloaded && (
+            {!loggedin && !isAuthenticated && (
               <li className="nav-item">
                 <Link
                   className="nav-link btn-signin text-white  rounded-pill text-center mx-1"
@@ -97,7 +97,7 @@ function Navbar() {
                 </Link>
               </li>
             )}
-            {isAuthenticated && userloaded && (
+            {(isAuthenticated || loggedin) && (
               <li className="nav-item dropdown">
                 <a
                   className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"

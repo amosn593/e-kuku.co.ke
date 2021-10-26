@@ -36,18 +36,18 @@ function Footer() {
           </p>
         </div>
         <div className="col-md-3 text-white mt-3">
-          <p className="text-white">
-            <i class="fa fa-envelope" aria-hidden="true">
+          <p className="text-white mx-2">
+            <i className="fa fa-envelope" aria-hidden="true">
               <span className="mx-2">info@e-kuku.co.ke</span>
             </i>
           </p>
-          <p className="text-white">
-            <i class="fa fa-envelope" aria-hidden="true">
+          <p className="text-white mx-2">
+            <i className="fa fa-envelope" aria-hidden="true">
               <span className="mx-2">support@e-kuku.co.ke</span>
             </i>
           </p>
-          <p className="text-white">
-            <i class="fa fa-phone-square" aria-hidden="true">
+          <p className="text-white mx-2">
+            <i className="fa fa-phone-square" aria-hidden="true">
               <span className="mx-2">+254776464012</span>
             </i>
           </p>

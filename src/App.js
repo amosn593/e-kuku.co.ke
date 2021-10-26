@@ -14,6 +14,7 @@ import Feed from "./components/pages/Feed";
 import SearchResult from "./components/pages/SearchResult";
 import Sell from "./components/pages/Sell";
 import Protected from "./components/profile/Protected";
+import Loggedin from "./components/profile/Loggedin";
 import Login from "./components/profile/Login";
 import Register from "./components/profile/Register";
 import Resetpassword from "./components/profile/Resetpassword";
@@ -27,7 +28,7 @@ import { check_authenticated, load_user } from "./redux/Apicalls";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, loggedin } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -60,7 +61,13 @@ function App() {
               exact
               component={Equipments}
             />
-            <Route exct path="/sign-in" exact component={Login} />
+            <Loggedin
+              exct
+              path="/sign-in"
+              exact
+              component={Login}
+              loggedin={loggedin}
+            />
             <Route exct path="/sign-up" exact component={Register} />
             <Protected
               exct
