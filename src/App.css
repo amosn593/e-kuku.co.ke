@@ -167,8 +167,6 @@ body {
 @media screen and (max-width: 560px) {
   .mynavbar {
     position: relative !important;
-    /* height: auto !important; */
-    /* top: 0px; */
   }
   .page-content {
     margin-top: 0px !important;

@@ -8,8 +8,8 @@ function Search() {
 
   const post = async (e) => {
     e.preventDefault();
-    setSearch("");
     history.push(`/poultry_search/${search}`);
+    setSearch("");
   };
   return (
     <div className="container-fluid py-3 search-bg">

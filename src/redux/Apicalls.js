@@ -1,59 +1,30 @@
 import {
   loginstart,
   login,
+  logout,
   loginerror,
   loadstart,
   loaduser,
   loaduser_error,
-  authenticate_start,
-  authenticate_user,
-  authenticate_error,
+  updateuser,
   signup_start,
   signup,
   signup_error,
 } from "./userSlice";
 import { axios } from "../components/inc/axios";
 
-export const check_authenticated = () => async (dispatch) => {
-  dispatch(authenticate_start());
-  if (localStorage.getItem("access")) {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-
-    const body = JSON.stringify({ token: localStorage.getItem("access") });
-
-    try {
-      const res = await axios.post("/auth/jwt/verify/", body, config);
-
-      if (res.data.code !== "token_not_valid") {
-        dispatch(authenticate_user());
-      } else {
-        dispatch(authenticate_error());
-      }
-    } catch (err) {
-      dispatch(authenticate_error());
-    }
-  } else {
-    dispatch(authenticate_error());
-  }
-};
-
 export const load_user = () => async (dispatch) => {
   dispatch(loadstart());
-  if (localStorage.getItem("access")) {
+  if (localStorage.getItem("refresh")) {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `JWT ${localStorage.getItem("access")}`,
         Accept: "application/json",
       },
     };
+    const body = JSON.stringify({ refresh: localStorage.getItem("refresh") });
     try {
-      const res = await axios.get("/auth/users/me/", config);
+      const res = await axios.post("/auth/jwt/refresh/", body, config);
 
       if (res.status === 200) {
         dispatch(loaduser(res.data));
@@ -61,10 +32,10 @@ export const load_user = () => async (dispatch) => {
         dispatch(loaduser_error());
       }
     } catch (err) {
-      dispatch(loaduser_error());
+      dispatch(logout());
     }
   } else {
-    dispatch(loaduser_error());
+    dispatch(logout());
   }
 };
 
@@ -81,12 +52,37 @@ export const login_user = async (body, dispatch, history) => {
 
     if (res.status === 200) {
       dispatch(login(res.data));
-      dispatch(load_user());
+      history.push("/");
     } else {
       dispatch(loginerror());
     }
   } catch (err) {
     dispatch(loginerror());
+  }
+};
+
+export const update_user = () => async (dispatch) => {
+  if (localStorage.getItem("refresh")) {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+    const body = JSON.stringify({ refresh: localStorage.getItem("refresh") });
+    try {
+      const res = await axios.post("/auth/jwt/refresh/", body, config);
+
+      if (res.status === 200) {
+        dispatch(updateuser(res.data));
+      } else {
+        dispatch(logout());
+      }
+    } catch (err) {
+      dispatch(logout());
+    }
+  } else {
+    dispatch(logout());
   }
 };
 

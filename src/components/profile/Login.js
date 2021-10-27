@@ -27,18 +27,14 @@ function Login() {
 
   const history = useHistory();
 
-  const { login_pending, error, loggedin, login_user_error } = useSelector(
+  const { login_pending, error, login_user_error } = useSelector(
     (state) => state.user
   );
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login_user(body, dispatch);
+    login_user(body, dispatch, history);
   };
-
-  if (loggedin) {
-    history.push("/");
-  }
 
   return (
     <div className="container mt-3 mx-3">

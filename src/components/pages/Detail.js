@@ -36,6 +36,7 @@ function Detail() {
   useEffect(() => {
     updatePost();
     getPost();
+    // eslint-disable-next-line
   }, []);
 
   if (!noPost) {

@@ -29,6 +29,7 @@ function SearchResult() {
 
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line
   }, []);
 
   if (!loading) {

@@ -3,13 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    email: "",
     error: null,
     load_error: null,
     access: localStorage.getItem("access"),
     refresh: localStorage.getItem("refresh"),
     login_pending: null,
-    loggedin: null,
     login_user_error: "",
     load_user_error: "",
     logout: null,
@@ -28,24 +26,24 @@ export const userSlice = createSlice({
   reducers: {
     loginstart: (state) => {
       state.login_pending = true;
-      state.loggedin = false;
+      state.isAuthenticated = false;
       state.error = false;
     },
 
     login: (state, action) => {
-      state.email = "Hello!";
       state.access = action.payload.access;
       state.refresh = action.payload.refresh;
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
       state.login_pending = false;
-      state.loggedin = true;
+      state.isAuthenticated = true;
     },
     loginerror: (state) => {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
       state.login_pending = false;
       state.error = true;
+      state.isAuthenticated = false;
       state.login_user_error = "Invalid Login Creditals!!!";
     },
     logout: (state) => {
@@ -54,14 +52,12 @@ export const userSlice = createSlice({
       state.access = null;
       state.refresh = null;
       state.isAuthenticated = false;
-      state.userloaded = false;
-      state.loggedin = false;
-      state.email = "";
       state.error = false;
       state.logout = true;
     },
     loadstart: (state) => {
       state.load_pending = true;
+      state.isAuthenticated = false;
       state.userloaded = false;
       state.load_error = false;
     },
@@ -71,9 +67,12 @@ export const userSlice = createSlice({
       state.load_error = false;
       state.isAuthenticated = true;
       state.userinfo = action.payload;
+      state.access = action.payload.access;
+      state.refresh = action.payload.refresh;
+      localStorage.setItem("access", action.payload.access);
+      localStorage.setItem("refresh", action.payload.refresh);
     },
     loaduser_error: (state) => {
-      state.email = "";
       state.userinfo = null;
       state.load_pending = false;
       state.userloaded = false;
@@ -81,18 +80,15 @@ export const userSlice = createSlice({
       state.load_error = true;
       state.load_user_error = "Invalid Access Token!!!";
     },
-    authenticate_start: (state) => {
-      state.authenticate_pending = true;
-      state.isAuthenticated = false;
-    },
-    authenticate_user: (state, action) => {
+    updateuser: (state, action) => {
       state.isAuthenticated = true;
-      state.authenticate_pending = false;
+      state.userinfo = action.payload;
+      state.access = action.payload.access;
+      state.refresh = action.payload.refresh;
+      localStorage.setItem("access", action.payload.access);
+      localStorage.setItem("refresh", action.payload.refresh);
     },
-    authenticate_error: (state, action) => {
-      state.authenticate_pending = false;
-      // state.isAuthenticated = false;
-    },
+
     signup_start: (state) => {
       state.signup_pending = true;
       state.signup = false;
@@ -122,9 +118,7 @@ export const {
   loadstart,
   loaduser,
   loaduser_error,
-  authenticate_start,
-  authenticate_user,
-  authenticate_error,
+  updateuser,
   signup_start,
   signup,
   signup_error,
