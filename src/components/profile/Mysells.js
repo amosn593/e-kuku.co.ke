@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
+import UpdateUser from "../../utils/UpdateUser";
 
 function Mysells() {
   const [posts, setPosts] = useState([]);
@@ -31,6 +32,8 @@ function Mysells() {
   useEffect(() => {
     myadverts();
   }, []);
+
+  UpdateUser();
 
   const delete_my_post = async (id) => {
     setDeleting(true);

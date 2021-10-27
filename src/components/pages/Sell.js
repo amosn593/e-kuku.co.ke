@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { axios } from "../inc/axios";
+import { UpdateUser } from "../../utils/UpdateUser";
 
 function Sell() {
   document.title = "Sell | E-KUKU";
@@ -106,6 +107,8 @@ function Sell() {
       setError_msg("Kindly, login to post!!!");
     }
   };
+
+  UpdateUser();
 
   return (
     <div className="container mt-2 mb-3 pt-2 pb-4">

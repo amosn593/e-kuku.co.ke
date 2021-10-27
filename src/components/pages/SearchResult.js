@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { UpdateUser } from "../../utils/UpdateUser";
 import { axios } from "../inc/axios";
 import Post from "./Post";
 import Spinner from "../inc/Spinner";
@@ -30,7 +30,9 @@ function SearchResult() {
   useEffect(() => {
     getPosts();
     // eslint-disable-next-line
-  }, []);
+  }, [search]);
+
+  UpdateUser();
 
   if (!loading) {
     if (posts.length > 0) {

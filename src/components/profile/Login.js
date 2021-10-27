@@ -37,7 +37,7 @@ function Login() {
   };
 
   return (
-    <div className="container mt-3 mx-3">
+    <div className="container my-3 mx-3">
       <div className="row mx-3">
         <div className="col-md-3 mt-3"></div>
         <div className="col-md-6 mt-3">
@@ -87,7 +87,7 @@ function Login() {
             </p>
             <p className="mt-3">
               Forgot your Password?{" "}
-              <Link to="/Reset-Password">Reset Password</Link>
+              <Link to="/Reset_Password">Reset Password</Link>
             </p>
           </form>
         </div>

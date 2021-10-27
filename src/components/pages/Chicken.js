@@ -4,6 +4,7 @@ import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
+import { UpdateUser } from "../../utils/UpdateUser";
 
 function Egg() {
   document.title = "Chicken | E-KUKU";
@@ -29,6 +30,8 @@ function Egg() {
   useEffect(() => {
     getPosts();
   }, []);
+
+  UpdateUser();
 
   if (!loading) {
     if (!noPosts) {

@@ -8,7 +8,7 @@ function Search() {
 
   const post = async (e) => {
     e.preventDefault();
-    history.push(`/poultry_search/${search}`);
+    history.push(`/search/${search}`);
     setSearch("");
   };
   return (

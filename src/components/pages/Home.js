@@ -4,6 +4,7 @@ import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
+import {UpdateUser} from "../../utils/UpdateUser";
 
 function Home() {
   document.title = "Home | E-KUKU";
@@ -26,6 +27,8 @@ function Home() {
   useEffect(() => {
     getPosts();
   }, []);
+
+  UpdateUser();
 
   if (!loading) {
     if (posts.length > 0) {

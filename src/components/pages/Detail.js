@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axios } from "../inc/axios";
 import { useParams } from "react-router-dom";
 import "./pages.css";
+import { UpdateUser } from "../../utils/UpdateUser";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -38,6 +39,8 @@ function Detail() {
     getPost();
     // eslint-disable-next-line
   }, []);
+
+  UpdateUser();
 
   if (!noPost) {
     return (

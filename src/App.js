@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/inc/Navbar";
@@ -24,35 +24,15 @@ import Terms from "./components/inc/Terms";
 import Privacy from "./components/inc/Privacy";
 import About from "./components/inc/About";
 import { useDispatch } from "react-redux";
-import { load_user, update_user } from "./redux/Apicalls";
+import { load_user } from "./redux/Apicalls";
 
 function App() {
   const dispatch = useDispatch();
-  const [refresh, setRefresh] = useState(null);
-
-  const get_refresh = () => {
-    setRefresh(() =>
-      localStorage.getItem("refresh") ? localStorage.getItem("refresh") : null
-    );
-  };
 
   useEffect(() => {
     dispatch(load_user());
     // eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    get_refresh();
-    let fourMinutes = 1000 * 60 * 5;
-
-    let interval = setInterval(() => {
-      if (refresh) {
-        dispatch(update_user());
-      }
-    }, fourMinutes);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line
-  }, [refresh]);
 
   return (
     <div className="main-content">
@@ -66,19 +46,14 @@ function App() {
             <Route path="/eggs" exact component={Egg} />
             <Route path="/chicken_feeds" exact component={Feed} />
             <Route path="/poultry_details/:id" exact component={Detail} />
-            <Route
-              path="/poultry_search/:search"
-              exact
-              component={SearchResult}
-            />
-
+            <Route path="/search/:search" exact component={SearchResult} />
             <Route path="/poultry_structures" exact component={Equipments} />
             <PublicRoute path="/sign-in" exact component={Login} />
             <Route path="/sign-up" exact component={Register} />
             <PrivateRoute component={Sell} path="/sell" exact />
-            <Route path="/Reset-Password" exact component={Resetpassword} />
+            <Route path="/Reset_Password" exact component={Resetpassword} />
             <Route
-              path="/Reset-Password-Email"
+              path="/Reset_Password_email"
               exact
               component={ResetPasswordEmail}
             />

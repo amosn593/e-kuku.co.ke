@@ -4,6 +4,7 @@ import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
+import { UpdateUser } from "../../utils/UpdateUser";
 
 function Equipments() {
   document.title = "Poultry Structures | E-KUKU";
@@ -28,6 +29,8 @@ function Equipments() {
   useEffect(() => {
     getPosts();
   }, []);
+
+  UpdateUser();
 
   if (!loading) {
     if (!noPosts) {
