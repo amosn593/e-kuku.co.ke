@@ -7,7 +7,7 @@ import Search from "../inc/Search";
 import { UpdateUser } from "../../utils/UpdateUser";
 
 function Equipments() {
-  document.title = "Poultry Structures | E-KUKU";
+  document.title = "Poultry Facilities | E-KUKU";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 

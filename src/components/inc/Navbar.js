@@ -66,7 +66,7 @@ function Navbar() {
             <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
-                to="/chicken_feeds"
+                to="/feeds-medicine"
               >
                 Feeds & Medicines
               </Link>
@@ -74,7 +74,7 @@ function Navbar() {
             <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"
-                to="/poultry_structures"
+                to="/poultry-facilities"
               >
                 Poultry Facilities
               </Link>
@@ -87,7 +87,7 @@ function Navbar() {
                 SELL
               </Link>
             </li>
-            { !isAuthenticated && (
+            {!isAuthenticated && (
               <li className="nav-item">
                 <Link
                   className="nav-link btn-signin text-white  rounded-pill text-center mx-1"

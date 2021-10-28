@@ -44,10 +44,10 @@ function App() {
             <Route path="/chicks" exact component={Chick} />
             <Route path="/chicken" exact component={Chicken} />
             <Route path="/eggs" exact component={Egg} />
-            <Route path="/chicken_feeds" exact component={Feed} />
+            <Route path="/feeds-medicine" exact component={Feed} />
             <Route path="/poultry_details/:id" exact component={Detail} />
             <Route path="/search/:search" exact component={SearchResult} />
-            <Route path="/poultry_structures" exact component={Equipments} />
+            <Route path="/poultry-facilities" exact component={Equipments} />
             <PublicRoute path="/sign-in" exact component={Login} />
             <Route path="/sign-up" exact component={Register} />
             <PrivateRoute component={Sell} path="/sell" exact />

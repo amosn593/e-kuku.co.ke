@@ -65,7 +65,7 @@ function Register() {
   }
 
   return (
-    <div className="container mt-3">
+    <div className="container-fluid mt-5 pt-3 login-div">
       <div className="row">
         <div className="col-md-3 mt-3"></div>
         <div className="col-md-6 mt-3">
