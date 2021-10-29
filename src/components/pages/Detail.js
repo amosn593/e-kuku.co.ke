@@ -11,6 +11,7 @@ import {
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 function Detail() {
+  document.title = "Post Details | E-KUKU";
   const [post, setPost] = useState([]);
 
   const noPost = !post || (post && post.length === 0);

@@ -84,7 +84,7 @@ function Sell() {
         const res = await axios.post("/main/poultrycreate/", formData, config);
         if (res.status === 201) {
           setPosting(false);
-          history.push("/");
+          history.push(`sponsor/${res.data.id}`);
         } else if (res.status === 401) {
           setPosting(false);
           setError(true);
@@ -98,8 +98,6 @@ function Sell() {
         setPosting(false);
         setError(true);
         setError_msg("Server, kindly try again later!!!");
-        console.log(err);
-        history.push("/");
       }
     } else {
       setPosting(false);
@@ -113,9 +111,9 @@ function Sell() {
   return (
     <div className="container mt-2 mb-3 pt-2 pb-4">
       <div className="w-85 mx-auto bg-dark">
-        <p className="text-center align-center text-white py-4">
+        <h5 className="text-center align-center text-white py-4">
           Post Your Product For Free
-        </p>
+        </h5>
       </div>
       {error && <p className="text-center login-error">{error_msg}</p>}
       <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-1 ">
@@ -226,7 +224,7 @@ function Sell() {
             type="text"
             className="form-control"
             id="business_name"
-            maxLength="15"
+            maxLength="40"
             placeholder="e.g Feeds Suppliers Ltd"
             required
           />
@@ -237,7 +235,7 @@ function Sell() {
             type="text"
             className="form-control"
             id="location"
-            maxLength="30"
+            maxLength="80"
             placeholder="Street name, Address..."
             required
           />

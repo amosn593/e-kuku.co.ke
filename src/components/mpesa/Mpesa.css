@@ -1,0 +1,27 @@
+.sponsor-card {
+  border: 1px solid #123512;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.free-plan {
+  color: rgb(116, 9, 9);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.basic-plan {
+  color: rgb(30, 10, 204);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.premium-plan {
+  color: rgb(10, 201, 89);
+  font-size: 18px;
+  font-weight: 400;
+}
+.sponsor-ul {
+  list-style-type: none;
+}

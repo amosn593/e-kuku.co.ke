@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import UpdateUser from "../../utils/UpdateUser";
@@ -7,6 +9,8 @@ function Mysells() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
+
+  const history = useHistory();
 
   const myadverts = async () => {
     setLoading(true);
@@ -60,6 +64,7 @@ function Mysells() {
       }
     } else {
       alert("You have been LoggedOut, Kindly Login Again!!!");
+      history.push("/sign-in");
     }
   };
 
@@ -101,9 +106,12 @@ function Mysells() {
                       <p className="my-0 py-1 px-2">Views: {post.views}</p>
                     </div>
                     <div className="col-md-4 text-center my-2 py-2">
-                      <button className="btn btn-primary my-2">
+                      <Link
+                        className="btn btn-primary my-2"
+                        to={`sponsor/${post.id}`}
+                      >
                         Sponsor Advert
-                      </button>
+                      </Link>
                       <br />
 
                       <button

@@ -20,6 +20,7 @@ import Register from "./components/profile/Register";
 import Resetpassword from "./components/profile/Resetpassword";
 import ResetPasswordEmail from "./components/profile/ResetPasswordEmail";
 import Mysells from "./components/profile/Mysells";
+import Mpesa from "./components/mpesa/Mpesa";
 import Terms from "./components/inc/Terms";
 import Privacy from "./components/inc/Privacy";
 import About from "./components/inc/About";
@@ -58,6 +59,7 @@ function App() {
               component={ResetPasswordEmail}
             />
             <PrivateRoute component={Mysells} path="/my-sells" exact />
+            <PrivateRoute component={Mpesa} path="/sponsor/:id" exact />
             <Route path="/terms-and-conditions" exact component={Terms} />
             <Route path="/privacy-policy" exact component={Privacy} />
             <Route path="/about-e-kuku" exact component={About} />
