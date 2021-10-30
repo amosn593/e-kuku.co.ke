@@ -59,50 +59,71 @@ function Sell() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setPosting(true);
-    const formData = new FormData();
-    formData.append("county", e.target.county.value);
-    formData.append("subcounty", e.target.subcounty.value);
-    formData.append("category", e.target.category.value);
-    formData.append("title", e.target.title.value);
-    formData.append("price", e.target.price.value);
-    formData.append("description", e.target.description.value);
-    formData.append("contact", e.target.contact.value);
-    formData.append("business_name", e.target.business_name.value);
-    formData.append("location", e.target.location.value);
-    formData.append("image", picture, picture.name);
-
-    // posting data to backend
-    if (localStorage.getItem("access")) {
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `JWT ${localStorage.getItem("access")}`,
-        },
-      };
-      try {
-        const res = await axios.post("/main/poultrycreate/", formData, config);
-        if (res.status === 201) {
-          setPosting(false);
-          history.push(`sponsor/${res.data.id}`);
-        } else if (res.status === 401) {
-          setPosting(false);
-          setError(true);
-          setError_msg("Invalid Access Tokin, kindly login!!!");
-        } else {
-          setPosting(false);
-          setError(true);
-          setError_msg("Server, kindly try again later!!!");
-        }
-      } catch (err) {
-        setPosting(false);
-        setError(true);
-        setError_msg("Server, kindly try again later!!!");
-      }
+    // checking correct county value selected
+    if (e.target.county.value === "c") {
+      alert("Select a Valid Region");
     } else {
-      setPosting(false);
-      setError(true);
-      setError_msg("Kindly, login to post!!!");
+      // checking correct sub-county value selected
+      if (e.target.subcounty.value === "c") {
+        alert("Select a Valid Sub Region");
+      } else {
+        // checking correct category value selected
+        if (e.target.category.value === "c") {
+          alert("Select a Valid Category");
+        } else {
+          setPosting(true);
+          const formData = new FormData();
+          formData.append("county", e.target.county.value);
+          formData.append("subcounty", e.target.subcounty.value);
+          formData.append("category", e.target.category.value);
+          formData.append("title", e.target.title.value);
+          formData.append("price", e.target.price.value);
+          formData.append("description", e.target.description.value);
+          formData.append("contact", e.target.contact.value);
+          formData.append("business_name", e.target.business_name.value);
+          formData.append("location", e.target.location.value);
+          formData.append("image", picture, picture.name);
+
+          // posting data to backend
+          if (localStorage.getItem("access")) {
+            const config = {
+              headers: {
+                "content-type": "multipart/form-data",
+                Authorization: `JWT ${localStorage.getItem("access")}`,
+              },
+            };
+            try {
+              const res = await axios.post(
+                "/main/poultrycreate/",
+                formData,
+                config
+              );
+              if (res.status === 201) {
+                setPosting(false);
+                history.push(`sponsor/${res.data.id}`);
+              } else if (res.status === 404) {
+                setPosting(false);
+                setError(true);
+                setError_msg("Form Data Error, kindly try again!!!");
+              } else {
+                setPosting(false);
+                setError(true);
+                setError_msg("Server Error, kindly try again later!!!");
+              }
+            } catch (err) {
+              setPosting(false);
+              setError(true);
+              setError_msg(
+                "Network Error, Check your internet connection and try again!!!"
+              );
+            }
+          } else {
+            setPosting(false);
+            setError(true);
+            setError_msg("Kindly, login to post!!!");
+          }
+        }
+      }
     }
   };
 

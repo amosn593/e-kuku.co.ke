@@ -23,7 +23,7 @@ function Mysells() {
       };
       try {
         const response = await axios.get("/main/mypoultry", config);
-        if (response && response.data) {
+        if (response && response.data.length > 0) {
           setPosts(response.data);
           setLoading(false);
         }
@@ -69,7 +69,7 @@ function Mysells() {
   };
 
   if (!loading) {
-    if (posts.length > 0) {
+    if (posts) {
       return (
         <div>
           <div className="row mx-2 my-2">
