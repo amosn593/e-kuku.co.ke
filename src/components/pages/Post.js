@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Post(props) {
   return (
-    <div className="col-md-3 my-2">
+    <div className="col-md-3 my-2 py-2">
       <div className="card text-center shadow mycard">
         <div className="card-header text-muted d-flex justify-content-between">
           <i className="fa fa-map-marker" aria-hidden="true">

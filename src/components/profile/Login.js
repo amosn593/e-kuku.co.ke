@@ -81,14 +81,16 @@ function Login() {
             </button>
             <p className="mt-3">
               Don't Have an account?
-              <Link to="/sign-up" className="mx-1 py-1">
-                Sign Up
+              <Link to="/sign-up" className="text-white mx-1 py-1">
+                Register Here
               </Link>
             </p>
-            <p className="mt-3">
-              Forgot your Password?{" "}
-              <Link to="/Reset_Password">Reset Password</Link>
-            </p>
+            {/* <p className="mt-3">
+              Forgot your Password?
+              <Link to="/Reset_Password" className="text-white mx-1 py-1">
+                Reset Password
+              </Link>
+            </p> */}
           </form>
         </div>
         <div className="col-md-3 mt-5"></div>

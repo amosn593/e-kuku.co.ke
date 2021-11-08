@@ -71,7 +71,7 @@ function Resetpassword() {
               </button>
               <p className=" my-3 py-4">
                 Remembered your Password?
-                <Link to="/sign-in" className="mx-1">
+                <Link to="/sign-in" className="text-white mx-1">
                   Sign In
                 </Link>
               </p>

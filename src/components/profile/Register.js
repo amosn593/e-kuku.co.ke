@@ -61,6 +61,7 @@ function Register() {
   }
 
   if (signup) {
+    alert("Account Created Successfully");
     history.push("/sign-in");
   }
 
@@ -151,9 +152,14 @@ function Register() {
             <div className="row">
               <div className="col-md-12 my-2 py-2">
                 <p className="text-center">
-                  <strong className="mx-2">Note</strong>By registering you agree
-                  and accepts our terms and conditions, and that you have read
-                  our privacy policy.
+                  By creating an account you agree to our
+                  <Link
+                    className="text-white mx-1 footer-links"
+                    to="/terms-and-conditions"
+                  >
+                    Terms & Conditions
+                  </Link>
+                  .
                 </p>
               </div>
             </div>
@@ -167,7 +173,7 @@ function Register() {
             </button>
             <p className=" my-3 py-4">
               Already Have an account?
-              <Link to="/sign-in" className="mx-1">
+              <Link to="/sign-in" className="text-white mx-1">
                 Sign In
               </Link>
             </p>

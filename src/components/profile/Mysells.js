@@ -23,7 +23,7 @@ function Mysells() {
       };
       try {
         const response = await axios.get("/main/mypoultry", config);
-        if (response && response.data.length > 0) {
+        if (response && response.data) {
           setPosts(response.data);
           setLoading(false);
         }
@@ -69,7 +69,7 @@ function Mysells() {
   };
 
   if (!loading) {
-    if (posts) {
+    if (posts.length > 0) {
       return (
         <div>
           <div className="row mx-2 my-2">
@@ -102,6 +102,9 @@ function Mysells() {
                       <p className="my-0 py-1 px-2">Price: {post.price}</p>
                       <p className="my-0 py-1 px-2">
                         Posted: {post.date_posted}
+                      </p>
+                      <p className="my-0 py-1 px-2">
+                        Sponsored : {post.sponsored}
                       </p>
                       <p className="my-0 py-1 px-2">Views: {post.views}</p>
                     </div>

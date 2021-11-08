@@ -27,6 +27,11 @@
   font-size: 14px !important;
 }
 
+.footer-links {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 body {
   background-color: #eef2f4 !important;
   min-height: 100vh !important;

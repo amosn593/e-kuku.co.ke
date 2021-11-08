@@ -48,6 +48,7 @@ function Detail() {
       <div className="container my-3 py-3">
         <div className="row mx-0 mt-3">
           <div className="container d-flex">
+            <h4 className="my-2 py-2 mx-2">Share:</h4>
             <FacebookShareButton
               url={shareUrl}
               hashtag="e-kuku, online poultry marketplace"

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 
 function Search() {
-  const [search, setSearch] = useState("");
+  const [poultry, setPoultry] = useState("");
 
   const history = useHistory();
 
   const post = async (e) => {
     e.preventDefault();
-    history.push(`/search/${search}`);
-    setSearch("");
+    history.push(`/search?q=${poultry}`);
+    setPoultry("");
   };
   return (
     <div className="container-fluid py-3 search-bg">
@@ -25,8 +25,8 @@ function Search() {
               name="search-string"
               className="form-control"
               id="search-string"
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
+              onChange={(e) => setPoultry(e.target.value)}
+              value={poultry}
               placeholder="Type your search here!!!"
               required
             />

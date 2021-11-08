@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { UpdateUser } from "../../utils/UpdateUser";
 import { axios } from "../inc/axios";
 import Post from "./Post";
@@ -12,12 +11,14 @@ function SearchResult() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { search } = useParams();
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const query = params.get("q");
 
   const getPosts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`/main/poultrysearch/${search}`);
+      const response = await axios.get(`/main/poultrysearch/${query}`);
       if (response && response.data) {
         setPosts(response.data);
         setLoading(false);
@@ -28,9 +29,10 @@ function SearchResult() {
   };
 
   useEffect(() => {
+    console.log("useeffect called");
     getPosts();
     // eslint-disable-next-line
-  }, [search]);
+  }, [query]);
 
   UpdateUser();
 

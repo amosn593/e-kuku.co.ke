@@ -40,27 +40,29 @@ function Mpesa() {
   const finish = async (e) => {
     e.preventDefault();
 
-    setPaying(true);
-    if (localStorage.getItem("access")) {
-      if (plan) {
-        try {
-          const res = await axios.post("/mpesa/lipa/", body, config);
-          console.log(res);
-          if (res.status === 200) {
-            setPaying(false);
-          }
-        } catch (err) {
-          console.log("error occured");
-          setPaying(false);
-        }
-      } else {
-        history.push("/");
-      }
-    } else {
-      setPaying(false);
-      alert("You have been LoggedOut, Kindly Login Again!!!");
-      history.push("/sign-in");
-    }
+    // setPaying(true);
+    // if (localStorage.getItem("access")) {
+    //   if (plan) {
+    //     try {
+    //       const res = await axios.post("/mpesa/lipa/", body, config);
+    //       console.log(res);
+    //       if (res.status === 200) {
+    //         setPaying(false);
+    //       }
+    //     } catch (err) {
+    //       console.log("error occured");
+    //       setPaying(false);
+    //     }
+    //   } else {
+    //     history.push("/");
+    //   }
+    // } else {
+    //   setPaying(false);
+    //   alert("You have been LoggedOut, Kindly Login Again!!!");
+    //   history.push("/sign-in");
+    // }
+    alert("Product Posted Successfully");
+    history.push("/");
   };
 
   UpdateUser();
@@ -95,7 +97,7 @@ function Mpesa() {
           <div className="sponsor-card">
             <div className="basic-plan">
               <h5>Basic Plan</h5>
-              <p>ksh 300 Paid Once</p>
+              <p>ksh 250 Paid Once</p>
             </div>
 
             <ul className="sponsor-ul">
@@ -122,7 +124,7 @@ function Mpesa() {
           <div className="sponsor-card">
             <div className="premium-plan">
               <h5>Premium Plan</h5>
-              <p>ksh 600 Paid Once</p>
+              <p>ksh 500 Paid Once</p>
             </div>
 
             <ul className="sponsor-ul">
@@ -173,13 +175,13 @@ function Mpesa() {
             type="radio"
             id="basic"
             name="plans"
-            value="300"
+            value="250"
             width="25"
             required
             onClick={(e) => {
               setPlan(true);
               setCategory("Basic");
-              setAmount(300);
+              setAmount(250);
             }}
           />
           <label className="form-label mx-1" htmlFor="basic">
@@ -190,12 +192,12 @@ function Mpesa() {
             type="radio"
             id="premium"
             name="plans"
-            value="600"
+            value="500"
             required
             onClick={(e) => {
               setPlan(true);
               setCategory("Premium");
-              setAmount(600);
+              setAmount(500);
             }}
           />
           <label className="form-label mx-1" htmlFor="premium">
