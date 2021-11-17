@@ -29,7 +29,7 @@ function Search() {
                 id="search-string"
                 onChange={(e) => setPoultry(e.target.value)}
                 value={poultry}
-                placeholder="Type your search here!!!"
+                placeholder="Search here..."
                 required
               />
             </div>

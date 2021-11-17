@@ -63,7 +63,7 @@ function Mysells() {
         } catch (err) {
           setDeleting(false);
         }
-      }
+      } else setDeleting(false);
     } else {
       alert("You have been LoggedOut, Kindly Login Again!!!");
       history.push("/sign-in");
