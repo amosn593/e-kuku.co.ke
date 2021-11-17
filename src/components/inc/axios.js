@@ -1,6 +1,6 @@
 import Axios from "axios";
 
 export const axios = Axios.create({
-  baseURL: "https://e-kuku.co.ke",
+  baseURL: "http://127.0.0.1:8000",
   timeout: 5000,
 });

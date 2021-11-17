@@ -7,42 +7,55 @@
   box-sizing: border-box;
 }
 
-.main-content {
-  position: relative;
-  top: 0;
-  min-height: 100vh;
-}
-
-.page-content {
-  margin-top: 100px !important;
-  padding-bottom: 50px !important;
-}
-
-.footer {
-  margin-top: -20px !important;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 3.5rem;
-  font-size: 14px !important;
-}
-
-.footer-links {
-  text-decoration: none;
-  cursor: pointer;
-}
-
 body {
   background-color: #eef2f4 !important;
   min-height: 100vh !important;
   font-family: "Playfair", Arial, Helvetica, sans-serif !important;
 }
 
-.mybrand {
-  margin: 0px !important;
-  padding: 0px !important;
+/* Page Layout */
+
+.main-content {
+  position: relative;
+  min-height: 100vh;
 }
 
+.page-content {
+  padding-bottom: 3.5rem !important;
+}
+
+/* Footer layout */
+
+.footer {
+  position: absolute;
+  background-color: rgb(26, 23, 23);
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  font-size: 12px !important;
+}
+
+.footer-divs {
+  background-color: rgb(26, 23, 23);
+}
+
+.footer-links {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px !important;
+  transition: 0.6s;
+}
+
+.footer-links:hover {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px !important;
+  background-color: #198754;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* Navbar CSS */
 .mylogo {
   width: 150px !important;
   height: auto !important;
@@ -50,19 +63,8 @@ body {
   padding: 0px !important;
 }
 
-.mynavbar {
-  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
-  font-size: 12px !important;
-  position: sticky !important;
-  position: -webkit-sticky;
-  top: 0;
-  width: 100%;
-  margin: 0px !important;
-  padding: 0px !important;
-  z-index: 10000;
-}
-
 .nav-link {
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
   font-size: 16px !important;
   font-weight: 500 !important;
   padding: 10px 15px !important;
@@ -85,14 +87,43 @@ body {
   font-size: 10px !important;
 }
 
-.mycardbody {
-  height: 110px !important;
+/* search form */
+.search-bg {
+  background-color: #0dcaf0;
 }
 
-.mycardimg {
-  height: 150px !important;
+.search-form {
+  position: relative;
+  width: 100% !important;
 }
 
+.search-form .form-control {
+  padding-left: 2.375rem;
+}
+
+.search-form .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: rgb(85, 83, 83);
+}
+
+.search-form > input[type="text"] {
+  width: 100% !important;
+}
+
+.search-header {
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Card body */
 .mycard {
   transition: transform 0.2s !important;
 }
@@ -101,30 +132,12 @@ body {
   transform: scale(1.05);
 }
 
-.myimagepreview img {
-  width: 100%;
-  margin: auto;
-  height: 200px;
-  background-color: #eef2f4;
-  box-sizing: border-box;
-  border: none;
+.mycardbody {
+  height: 110px !important;
 }
 
-.mynotfound {
-  text-align: center;
-  padding-top: 25px;
-  color: red;
-}
-
-.sign-in:disabled {
-  cursor: not-allowed !important;
-}
-
-.hidden {
-  overflow: hidden !important;
-  width: 100% !important;
-  height: 25px !important;
-  font-size: 14px;
+.mycardimg {
+  height: 150px !important;
 }
 
 .view-details {
@@ -139,6 +152,34 @@ body {
   color: black !important;
 }
 
+/* Sell Page */
+
+.myimagepreview img {
+  width: 100%;
+  margin: auto;
+  height: 200px;
+  background-color: #eef2f4;
+  box-sizing: border-box;
+  border: none;
+}
+
+/* login */
+.login-div {
+  background-color: #023c69;
+  color: #f84a06;
+}
+
+.sign-in:disabled {
+  cursor: not-allowed !important;
+}
+
+.hidden {
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 25px !important;
+  font-size: 14px;
+}
+
 .error {
   text-align: center;
   color: red;
@@ -151,36 +192,8 @@ body {
   color: aliceblue;
 }
 
-/* search form */
-.search-bg {
-  background-color: #0dcaf0;
-}
-.search-header {
-  color: #000;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-/* login */
-.login-div {
-  background-color: #023c69;
-  color: #f84a06;
-}
-@media screen and (min-width: 560px) {
-  .mynavbar {
-    position: fixed !important;
-    height: 100px !important;
-    top: 0px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .mynavbar {
-    position: relative !important;
-  }
-  .page-content {
-    margin-top: 0px !important;
-    margin-bottom: 60px !important;
-    padding-bottom: 100px !important;
-  }
+.mynotfound {
+  text-align: center;
+  padding-top: 25px;
+  color: red;
 }

@@ -20,16 +20,19 @@ function Search() {
             For all your poultry needs in Kenya!!!
           </h6>
           <form className="form-inline d-flex" onSubmit={post}>
-            <input
-              type="text"
-              name="search-string"
-              className="form-control"
-              id="search-string"
-              onChange={(e) => setPoultry(e.target.value)}
-              value={poultry}
-              placeholder="Type your search here!!!"
-              required
-            />
+            <div className="form-group search-form">
+              <span class="fa fa-search form-control-feedback"></span>
+              <input
+                type="text"
+                name="search-string"
+                className="form-control"
+                id="search-string"
+                onChange={(e) => setPoultry(e.target.value)}
+                value={poultry}
+                placeholder="Type your search here!!!"
+                required
+              />
+            </div>
 
             <button type="submit" className="btn btn-primary mx-2">
               Search

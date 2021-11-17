@@ -37,7 +37,7 @@ function Equipments() {
       return (
         <div>
           <Search />
-          <div className="row mx-2 mt-3">
+          <div className="row mx-2 my-2">
             {posts.map((post) => {
               return <Post key={post.id} {...post} />;
             })}

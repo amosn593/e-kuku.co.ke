@@ -137,7 +137,7 @@ function Sell() {
         </h5>
       </div>
       {error && <p className="text-center login-error">{error_msg}</p>}
-      <form onSubmit={handleSubmit} className="row mx-0 mt-4 px-1 ">
+      <form onSubmit={(e) => handleSubmit(e)} className="row mx-0 mt-4 px-1 ">
         <div className="row">
           <div className="col-md-6 mt-3">
             <label className="form-label fw-bold">Region</label>

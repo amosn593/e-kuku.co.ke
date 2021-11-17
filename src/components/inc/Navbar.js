@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow ">
       <div className="container-fluid">
         <Link className="navbar-brand lead d-flex mybrand" to="/">
           <img

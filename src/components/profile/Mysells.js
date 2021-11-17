@@ -48,19 +48,21 @@ function Mysells() {
           Authorization: `JWT ${localStorage.getItem("access")}`,
         },
       };
-      try {
-        const response = await axios.delete(
-          `/main/mypoultrydelete/${id}`,
-          config
-        );
-        if (response.status === 204) {
-          const del = posts.filter((post) => id !== post.id);
-          setPosts(del);
+      if (window.confirm("Are sure to delete?")) {
+        try {
+          const response = await axios.delete(
+            `/main/mypoultrydelete/${id}`,
+            config
+          );
+          if (response.status === 204) {
+            const del = posts.filter((post) => id !== post.id);
+            setPosts(del);
+            setDeleting(false);
+            alert("Post Deleted Successfully!!!");
+          }
+        } catch (err) {
           setDeleting(false);
-          alert("Post Deleted Successfully!!!");
         }
-      } catch (err) {
-        setDeleting(false);
       }
     } else {
       alert("You have been LoggedOut, Kindly Login Again!!!");
@@ -73,7 +75,7 @@ function Mysells() {
       return (
         <div>
           <div className="row mx-2 my-2">
-            <div className="container my-3 py-3">
+            <div className="container my-2 py-2">
               {posts.map((post) => {
                 return (
                   <div key={post.id} className="row">
