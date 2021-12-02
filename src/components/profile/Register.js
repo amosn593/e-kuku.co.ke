@@ -67,7 +67,7 @@ function Register() {
 
   return (
     <div className="container-fluid login-div">
-      <div className="row">
+      <div className="row pt-4">
         <div className="col-md-3 mt-3"></div>
         <div className="col-md-6 mt-3">
           <h4>E-KUKU SIGN UP</h4>
@@ -154,12 +154,11 @@ function Register() {
                 <p className="text-center">
                   By creating an account you agree to our
                   <Link
-                    className="text-white mx-1 footer-links"
+                    className="text-white mx-1 px-2 footer-links"
                     to="/terms-and-conditions"
                   >
                     Terms & Conditions
                   </Link>
-                  .
                 </p>
               </div>
             </div>
@@ -173,7 +172,7 @@ function Register() {
             </button>
             <p className=" my-3 py-4">
               Already Have an account?
-              <Link to="/sign-in" className="text-white mx-1">
+              <Link to="/sign-in" className="mx-1 auth-links">
                 Sign In
               </Link>
             </p>

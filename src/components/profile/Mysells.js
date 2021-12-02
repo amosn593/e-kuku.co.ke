@@ -73,7 +73,7 @@ function Mysells() {
   if (!loading) {
     if (posts.length > 0) {
       return (
-        <div>
+        <div className="container">
           <div className="row mx-2 my-2">
             <div className="container my-2 py-2">
               {posts.map((post) => {

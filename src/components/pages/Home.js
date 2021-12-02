@@ -4,7 +4,7 @@ import { axios } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
-import {UpdateUser} from "../../utils/UpdateUser";
+import { UpdateUser } from "../../utils/UpdateUser";
 
 function Home() {
   document.title = "Home | E-KUKU";
@@ -35,10 +35,12 @@ function Home() {
       return (
         <div>
           <Search />
-          <div className="row mx-2 my-2">
-            {posts.map((post) => {
-              return <Post key={post.id} {...post} />;
-            })}
+          <div class="container">
+            <div className="row my-2">
+              {posts.map((post) => {
+                return <Post key={post.id} {...post} />;
+              })}
+            </div>
           </div>
         </div>
       );

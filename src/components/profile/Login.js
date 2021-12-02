@@ -38,7 +38,7 @@ function Login() {
 
   return (
     <div className="container-fluid login-div">
-      <div className="row mx-3">
+      <div className="row pt-4 mx-3">
         <div className="col-md-3 mt-3"></div>
         <div className="col-md-6 mt-3">
           <h4>SIGN IN</h4>
@@ -81,7 +81,7 @@ function Login() {
             </button>
             <p className="mt-3">
               Don't Have an account?
-              <Link to="/sign-up" className="text-white mx-1 py-1">
+              <Link to="/sign-up" className=" mx-1 py-1 auth-links">
                 Register Here
               </Link>
             </p>

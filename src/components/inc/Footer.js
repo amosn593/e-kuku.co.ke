@@ -37,9 +37,9 @@ function Footer() {
           </div>
         </div>
         <div className="col-md-6 text-center mt-2 d-block">
-          <h4 className="text-center text-white my-2 py-3">Our Products</h4>
+          <h5 className="text-center text-white my-2 py-3">Our Products</h5>
           <p className="text-white my-1 py-1">
-            <Link className="text-white mx-2 footer-links" to="/eggs">
+            <Link className="text-white mx-1 footer-links" to="/eggs">
               Eggs
             </Link>
           </p>
@@ -69,19 +69,19 @@ function Footer() {
           </p>
         </div>
         <div className="col-md-3 text-center text-white mt-3">
-          <h4 className="text-center my-2 py-3">Contact Us</h4>
+          <h5 className="text-center my-2 py-3">Contact Us</h5>
           <p className="text-white mx-2 my-1 py-1">
-            <i className="fa fa-envelope fa-2x" aria-hidden="true">
+            <i className="fa fa-envelope" aria-hidden="true">
               <span className="mx-2">info@e-kuku.co.ke</span>
             </i>
           </p>
           <p className="text-white mx-2 my-1 py-1">
-            <i className="fa fa-envelope fa-2x" aria-hidden="true">
+            <i className="fa fa-envelope" aria-hidden="true">
               <span className="mx-2">support@e-kuku.co.ke</span>
             </i>
           </p>
           <p className="text-white mx-2 my-1 py-1">
-            <i className="fa fa-phone-square fa-2x" aria-hidden="true">
+            <i className="fa fa-phone-square" aria-hidden="true">
               <span className="mx-2">+254776464012</span>
             </i>
           </p>

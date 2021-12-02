@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow ">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow mynavbar ">
       <div className="container-fluid">
         <Link className="navbar-brand lead d-flex mybrand" to="/">
           <img
@@ -87,49 +87,57 @@ function Navbar() {
                 SELL
               </Link>
             </li>
-            {!isAuthenticated && (
-              <li className="nav-item">
-                <Link
-                  className="nav-link btn-signin text-white  rounded-pill text-center mx-1"
-                  to="/sign-in"
-                >
-                  Sign In
-                </Link>
-              </li>
-            )}
-            {isAuthenticated && (
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"
-                  href="links"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  My Account
-                </a>
-                <ul
-                  className="dropdown-menu dropdown-menu-lg-end"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <li>
-                    <Link className="dropdown-item" to="/my-sells">
-                      My Adverts
-                    </Link>
-                  </li>
-                  <li></li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <button className="dropdown-item" onClick={logoutuser}>
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </li>
-            )}
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"
+                href="links"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                My Account
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-lg-end"
+                aria-labelledby="navbarDropdown"
+              >
+                {!isAuthenticated && (
+                  <div>
+                    <li>
+                      <Link className="dropdown-item text-center" to="/sign-in">
+                        Sign In
+                      </Link>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <Link className="dropdown-item text-center" to="/sign-up">
+                        Sign Up
+                      </Link>
+                    </li>
+                  </div>
+                )}
+
+                {isAuthenticated && (
+                  <div>
+                    <li>
+                      <Link className="dropdown-item" to="/my-sells">
+                        My Adverts
+                      </Link>
+                    </li>
+                    <li></li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <button className="dropdown-item" onClick={logoutuser}>
+                        Logout
+                      </button>
+                    </li>
+                  </div>
+                )}
+              </ul>
+            </li>
           </ul>
         </div>
       </div>

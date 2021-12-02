@@ -33,16 +33,17 @@ function Egg() {
 
   UpdateUser();
 
-
   if (!loading) {
     if (!noPosts) {
       return (
         <div>
           <Search />
-          <div className="row mx-2 my-2">
-            {posts.map((post) => {
-              return <Post key={post.id} {...post} />;
-            })}
+          <div class="container">
+            <div className="row my-2">
+              {posts.map((post) => {
+                return <Post key={post.id} {...post} />;
+              })}
+            </div>
           </div>
         </div>
       );

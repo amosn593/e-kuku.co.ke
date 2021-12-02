@@ -21,7 +21,7 @@ body {
 }
 
 .page-content {
-  padding-bottom: 3.5rem !important;
+  padding-bottom: 5.5rem !important;
 }
 
 /* Footer layout */
@@ -42,20 +42,27 @@ body {
 .footer-links {
   text-decoration: none;
   cursor: pointer;
-  font-size: 16px !important;
+  font-size: 14px !important;
   transition: 0.6s;
 }
 
 .footer-links:hover {
   text-decoration: none;
   cursor: pointer;
-  font-size: 16px !important;
+  font-size: 14px !important;
   background-color: #198754;
   padding: 5px;
   border-radius: 3px;
 }
 
+/* Footer layout */
+
 /* Navbar CSS */
+
+.mybrand {
+  height: 120px !important;
+  width: 156px !important;
+}
 .mylogo {
   width: 150px !important;
   height: auto !important;
@@ -73,6 +80,7 @@ body {
 
 .btn-signin {
   background-color: #00a0eb !important ;
+  width: 30px;
 }
 
 .btn-signin:hover {
@@ -86,6 +94,8 @@ body {
 .loggedbtn {
   font-size: 10px !important;
 }
+
+/* Navbar CSS */
 
 /* search form */
 .search-bg {
@@ -165,8 +175,22 @@ body {
 
 /* login */
 .login-div {
-  background-color: #023c69;
-  color: #f84a06;
+  background-color: #545658;
+  color: #e4ebe8;
+  padding-bottom: 60px !important;
+  margin-bottom: -50px !important;
+}
+
+.auth-links {
+  color: red !important;
+  padding: 5px;
+  text-decoration: none;
+  transition: 0.6s;
+}
+.auth-links:hover {
+  color: #004274 !important;
+  padding: 5px;
+  text-decoration: none;
 }
 
 .sign-in:disabled {
