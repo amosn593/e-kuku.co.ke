@@ -26,6 +26,8 @@ function Home() {
 
   useEffect(() => {
     getPosts();
+    window.scroll(0, 0);
+    // eslint-disable-next-line
   }, []);
 
   UpdateUser();

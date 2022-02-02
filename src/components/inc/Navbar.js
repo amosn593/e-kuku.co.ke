@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/userSlice";
-import Logo from "./images/logo.png";
+import Logo from "../assets/logo.png";
 
 function Navbar() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -39,6 +39,14 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/"
+              >
+                Home
+              </Link>
+            </li>
             <li className="nav-item">
               <Link
                 className="nav-link btn-success text-white rounded-pill text-center"

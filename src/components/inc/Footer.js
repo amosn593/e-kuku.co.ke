@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "./images/logo.png";
+import Logo from "../assets/logo.png";
 
 function Footer() {
   return (
@@ -38,6 +38,11 @@ function Footer() {
         </div>
         <div className="col-md-6 text-center mt-2 d-block">
           <h5 className="text-center text-white my-2 py-3">Our Products</h5>
+          <p className="text-white my-1 py-1">
+            <Link className="text-white mx-1 footer-links" to="/">
+              Home
+            </Link>
+          </p>
           <p className="text-white my-1 py-1">
             <Link className="text-white mx-1 footer-links" to="/eggs">
               Eggs

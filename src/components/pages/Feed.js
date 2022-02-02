@@ -8,6 +8,7 @@ import { UpdateUser } from "../../utils/UpdateUser";
 
 function Egg() {
   document.title = "Feeds&Medicine | E-KUKU";
+
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +29,8 @@ function Egg() {
 
   useEffect(() => {
     getPosts();
+    window.scroll(0, 0);
+    // eslint-disable-next-line
   }, []);
 
   UpdateUser();

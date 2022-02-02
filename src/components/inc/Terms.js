@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Terms() {
+  useEffect(() => {
+    window.scroll(0, 0);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="my-2 py-2">
       <h4 className="text-center">TERMS OF USE</h4>

@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function Privacy() {
+
+  useEffect(() => {
+    window.scroll(0, 0);
+    // eslint-disable-next-line
+  }, []);
+  
   return (
     <div className="my-2 py-2">
       <h4 className="text-center">Privacy Policy</h4>
