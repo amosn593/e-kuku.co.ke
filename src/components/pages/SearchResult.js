@@ -29,8 +29,8 @@ function SearchResult() {
   };
 
   useEffect(() => {
-    console.log("useeffect called");
     getPosts();
+    window.scroll(0, 0);
     // eslint-disable-next-line
   }, [query]);
 

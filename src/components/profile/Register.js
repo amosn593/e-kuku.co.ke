@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { signup_user } from "../../redux/Apicalls";
+import Bg from "../assets/chicken-bg.jpg";
 
 function Register() {
   document.title = "Register | E-KUKU";
@@ -48,6 +49,7 @@ function Register() {
 
   const registeruser = async (e) => {
     e.preventDefault();
+
     if (password === re_password) {
       signup_user(body, dispatch);
     } else {
@@ -65,10 +67,23 @@ function Register() {
     history.push("/sign-in");
   }
 
+  useEffect(() => {
+    window.scroll(0, 0);
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <div className="container-fluid login-div">
+    <div
+      className="container-fluid login-div"
+      style={{
+        backgroundImage: `url(${Bg})`,
+        backgroundRepeat: "no-repeat",
+        minWidth: "100%",
+        minHeight: "100vh",
+      }}
+    >
       <div className="row pt-4">
-        <div className="col-md-3 mt-3"></div>
+        <div className="col-md-6 mt-3"></div>
         <div className="col-md-6 mt-3">
           <h4>E-KUKU SIGN UP</h4>
           <p>Sign Up for a new Account</p>
@@ -178,7 +193,6 @@ function Register() {
             </p>
           </form>
         </div>
-        <div className="col-md-3 mt-3"></div>
       </div>
     </div>
   );

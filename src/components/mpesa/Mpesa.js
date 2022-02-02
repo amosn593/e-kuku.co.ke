@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Mpesa.css";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -65,7 +65,13 @@ function Mpesa() {
     history.push("/");
   };
 
+  useEffect(() => {
+    window.scroll(0, 0);
+    // eslint-disable-next-line
+  }, []);
+
   UpdateUser();
+
   return (
     <div className="container">
       <div className="w-100 mx-auto bg-dark">

@@ -50,6 +50,7 @@ function Sell() {
   useEffect(() => {
     getcounties();
     getcategories();
+    window.scroll(0, 0);
   }, []);
 
   const onChangePicture = (e) => {

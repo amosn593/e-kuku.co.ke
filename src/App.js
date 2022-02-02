@@ -24,10 +24,11 @@ import Mpesa from "./components/mpesa/Mpesa";
 import Terms from "./components/inc/Terms";
 import Privacy from "./components/inc/Privacy";
 import About from "./components/inc/About";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { load_user } from "./redux/Apicalls";
 
 function App() {
+  const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,19 +42,31 @@ function App() {
         <Navbar />
         <div className="page-content">
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/chicks" exact component={Chick} />
-            <Route path="/chicken" exact component={Chicken} />
-            <Route path="/eggs" exact component={Egg} />
-            <Route path="/feeds-medicine" exact component={Feed} />
-            <Route path="/poultry_details/:id" exact component={Detail} />
-            <Route path="/search" exact component={SearchResult} />
-            <Route path="/poultry-facilities" exact component={Equipments} />
+            <PrivateRoute component={Home} path="/" exact />
+            <PrivateRoute component={Chick} path="/chicks" exact />
+            <PrivateRoute component={Chicken} path="/chicken" exact />
+            <PrivateRoute component={Egg} path="/eggs" exact />
+            <PrivateRoute component={Feed} path="/feeds-medicine" exact />
+            <PrivateRoute
+              component={Detail}
+              path="/poultry_details/:id"
+              exact
+            />
+            <PrivateRoute component={SearchResult} path="/search" exact />
+            <PrivateRoute
+              component={Equipments}
+              path="/poultry-facilities"
+              exact
+            />
             <PublicRoute path="/sign-in" exact component={Login} />
-            <Route path="/sign-up" exact component={Register} />
+            <PublicRoute path="/sign-up" exact component={Register} />
             <PrivateRoute component={Sell} path="/sell" exact />
-            <Route path="/Reset_Password" exact component={Resetpassword} />
-            <Route
+            <PublicRoute
+              path="/Reset_Password"
+              exact
+              component={Resetpassword}
+            />
+            <PublicRoute
               path="/Reset_Password_email"
               exact
               component={ResetPasswordEmail}
@@ -66,9 +79,7 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </div>
-        <div className="footer">
-          <Footer />
-        </div>
+        <div className="footer">{isAuthenticated && <Footer />}</div>
       </Router>
     </div>
   );

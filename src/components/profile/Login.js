@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login_user } from "../../redux/Apicalls";
+import Bg from "../assets/chicken-bg.jpg";
 
 function Login() {
   document.title = "Login | E-KUKU";
@@ -36,12 +37,25 @@ function Login() {
     login_user(body, dispatch, history);
   };
 
+  useEffect(() => {
+    window.scroll(0, 0);
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <div className="container-fluid login-div">
+    <div
+      className="container-fluid login-div"
+      style={{
+        backgroundImage: `url(${Bg})`,
+        backgroundRepeat: "no-repeat",
+        minWidth: "100%",
+        minHeight: "100vh",
+      }}
+    >
       <div className="row pt-4 mx-3">
-        <div className="col-md-3 mt-3"></div>
+        <div className="col-md-6 mt-3"></div>
         <div className="col-md-6 mt-3">
-          <h4>SIGN IN</h4>
+          <h4 className="h3">SIGN IN</h4>
           <p>Sign into your Account</p>
           {error && <p className="login-error">{login_user_error}</p>}
 
@@ -52,13 +66,9 @@ function Login() {
                 type="email"
                 name="email"
                 className="form-control"
-                value={email}
                 required
                 onChange={(e) => onChange(e)}
               />
-              <div className="form-text">
-                We'll never share your email with anyone else.
-              </div>
             </div>
             <div className="mb-3">
               <label className="form-label">Password</label>
@@ -66,8 +76,6 @@ function Login() {
                 type="password"
                 name="password"
                 className="form-control"
-                value={password}
-                minLength="6"
                 required
                 onChange={(e) => onChange(e)}
               />
@@ -93,7 +101,6 @@ function Login() {
             </p> */}
           </form>
         </div>
-        <div className="col-md-3 mt-5"></div>
       </div>
     </div>
   );
