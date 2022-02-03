@@ -82,7 +82,7 @@ function Mysells() {
                   <div key={post.id} className="row">
                     <div className="col-md-4 text-center my-2 py-2">
                       <img
-                        className="w-100"
+                        className="rounded w-100"
                         src={post.get_image}
                         alt="product display"
                       />

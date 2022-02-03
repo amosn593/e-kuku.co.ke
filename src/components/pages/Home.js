@@ -7,7 +7,7 @@ import Search from "../inc/Search";
 
 function Home() {
 
-  document.title = "Home | E-KUKU";
+  document.title = "E-KUKU|Home";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 

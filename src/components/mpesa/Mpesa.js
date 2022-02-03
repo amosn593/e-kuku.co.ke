@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Mpesa.css";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { axios } from "../inc/axios";
-import { UpdateUser } from "../../utils/UpdateUser";
+import { axiosInstance } from "../inc/axios";
 
 function Mpesa() {
   document.title = "Advert sponsor | E-KUKU";
@@ -69,8 +68,6 @@ function Mpesa() {
     window.scroll(0, 0);
     // eslint-disable-next-line
   }, []);
-
-  UpdateUser();
 
   return (
     <div className="container">

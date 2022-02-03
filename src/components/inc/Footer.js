@@ -72,6 +72,11 @@ function Footer() {
               Poultry Facilities
             </Link>
           </p>
+          <p className="text-white my-1 py-1">
+            <Link className="text-white mx-2 footer-links" to="/sell">
+              Sell
+            </Link>
+          </p>
         </div>
         <div className="col-md-3 text-center text-white mt-3">
           <h5 className="text-center my-2 py-3">Contact Us</h5>

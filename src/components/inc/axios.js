@@ -4,33 +4,30 @@ import dayjs from "dayjs";
 
 const baseURL = "http://127.0.0.1:8000";
 
-let access = localStorage.getItem("access")
-  ? localStorage.getItem("access")
-  : null;
-
-let refresh = localStorage.getItem("refresh")
-  ? localStorage.getItem("refresh")
-  : null;
-
 const axiosInstance = axios.create({
   baseURL,
   timeout: 5000,
 });
 
 axiosInstance.interceptors.request.use(async (req) => {
-  console.log("interceptor run");
+  let access = localStorage.getItem("access")
+    ? localStorage.getItem("access")
+    : null;
+
+  let refresh = localStorage.getItem("refresh")
+    ? localStorage.getItem("refresh")
+    : null;
+
   // check if authToken exists
-  if (access != null) {
+  if (access != null && refresh != null) {
     //check if access token token expired
     const user = jwt_decode(access);
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
     if (!isExpired) {
-      console.log("not expired");
       req.headers.Authorization = `JWT ${access}`;
       return req;
     } else {
-      console.log("expired");
       //if access token exipred, refresh the token
       const response = await axios.post(`${baseURL}/auth/jwt/refresh/`, {
         refresh: refresh,

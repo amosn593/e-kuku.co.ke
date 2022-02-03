@@ -7,7 +7,7 @@ import { signup_user } from "../../redux/Apicalls";
 import Bg from "../assets/chicken-bg.jpg";
 
 function Register() {
-  document.title = "Register | E-KUKU";
+  document.title = "E-KUKU | Register";
   const [passerror, setPasserror] = useState(false);
   const [error_msg, setError_msg] = useState("");
   const {
@@ -20,14 +20,11 @@ function Register() {
   const [formData, setFormData] = useState({
     email: "",
     user_name: "",
-    full_name: "",
-    phone: "",
     password: "",
     re_password: "",
   });
 
-  const { email, user_name, full_name, phone, password, re_password } =
-    formData;
+  const { email, user_name, password, re_password } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,8 +32,6 @@ function Register() {
   const data = {
     email: email,
     user_name: user_name,
-    full_name: full_name,
-    phone: phone,
     password: password,
     re_password: re_password,
   };
@@ -130,29 +125,6 @@ function Register() {
           {signup_error && <p className="login-error">{signup_error_msg}</p>}
           {passerror && <p className="login-error">{error_msg}</p>}
           <form onSubmit={(e) => registeruser(e)} className="mt-3">
-            <div className="row my-2">
-              <div className="col-md-6">
-                <label className="form-label">Full Name</label>
-                <input
-                  type="text"
-                  name="full_name"
-                  className="form-control"
-                  required
-                  onChange={(e) => onChange(e)}
-                />
-              </div>
-              <div className="col-md-6">
-                <label className="form-label">Mobile Number</label>
-                <input
-                  type="number"
-                  name="phone"
-                  className="form-control"
-                  placeholder="0700000000"
-                  required
-                  onChange={(e) => onChange(e)}
-                />
-              </div>
-            </div>
             <div className="row my-2">
               <div className="col-md-6">
                 <label className="form-label">Email Address</label>

@@ -6,7 +6,6 @@ import {
   loadstart,
   loaduser,
   loaduser_error,
-  updateuser,
   signup_start,
   signup,
   signup_error,
@@ -60,7 +59,6 @@ export const login_user = async (body, dispatch, history) => {
     dispatch(loginerror());
   }
 };
-
 
 export const signup_user = async (body, dispatch) => {
   dispatch(signup_start());

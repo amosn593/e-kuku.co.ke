@@ -85,15 +85,6 @@ export const userSlice = createSlice({
       state.load_error = true;
       state.load_user_error = "Invalid Access Token!!!";
     },
-    updateuser: (state, action) => {
-      state.isAuthenticated = true;
-      state.userinfo = action.payload;
-      state.access = action.payload.access;
-      state.refresh = action.payload.refresh;
-      localStorage.setItem("access", action.payload.access);
-      localStorage.setItem("refresh", action.payload.refresh);
-      localStorage.setItem("authToken", action.payload);
-    },
 
     signup_start: (state) => {
       state.signup_pending = true;
@@ -124,7 +115,6 @@ export const {
   loadstart,
   loaduser,
   loaduser_error,
-  updateuser,
   signup_start,
   signup,
   signup_error,

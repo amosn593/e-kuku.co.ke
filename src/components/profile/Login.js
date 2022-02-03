@@ -5,7 +5,7 @@ import { login_user } from "../../redux/Apicalls";
 import Bg from "../assets/chicken-bg.jpg";
 
 function Login() {
-  document.title = "Login | E-KUKU";
+  document.title = "E-KUKU | Login";
 
   const [formData, setFormData] = useState({
     email: "",
