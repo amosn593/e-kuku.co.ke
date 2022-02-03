@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Post from "./Post";
-import { axios } from "../inc/axios";
+import { axiosInstance } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
-import { UpdateUser } from "../../utils/UpdateUser";
 
 function Home() {
+
   document.title = "Home | E-KUKU";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ function Home() {
   const getPosts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("/main/latestpoultry");
+      const response = await axiosInstance.get("/main/latestpoultry");
       if (response && response.data) {
         setPosts(response.data);
         setLoading(false);
@@ -30,15 +30,15 @@ function Home() {
     // eslint-disable-next-line
   }, []);
 
-  UpdateUser();
 
   if (!loading) {
     if (posts.length > 0) {
       return (
         <div>
           <Search />
-          <div class="container">
-            <div className="row my-2">
+          <div className="container">
+            <h4 className="py-3">Trending Hot Deals</h4>
+            <div className="row my-1">
               {posts.map((post) => {
                 return <Post key={post.id} {...post} />;
               })}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { axios } from "../inc/axios";
+import { axiosInstance } from "../inc/axios";
 
 function Resetpassword() {
   const [reset, setReset] = useState("");
@@ -28,7 +28,7 @@ function Resetpassword() {
 
     const body = JSON.stringify({ email });
     try {
-      await axios.post("/auth/users/reset_password/", body, config);
+      await axiosInstance.post("/auth/users/reset_password/", body, config);
 
       setRequestSent(true);
       setPending(false);

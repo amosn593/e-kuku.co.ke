@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { update_user } from "../redux/Apicalls";
+// import { useState, useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { update_user } from "../redux/Apicalls";
 
-export function UpdateUser() {
-  const dispatch = useDispatch();
-  const [refresh, setRefresh] = useState(null);
+// export function UpdateUser() {
+//   const dispatch = useDispatch();
+//   const [refresh, setRefresh] = useState(null);
 
-  const get_refresh = () => {
-    setRefresh(() =>
-      localStorage.getItem("refresh") ? localStorage.getItem("refresh") : null
-    );
-  };
+//   const get_refresh = () => {
+//     setRefresh(() =>
+//       localStorage.getItem("refresh") ? localStorage.getItem("refresh") : null
+//     );
+//   };
 
-  useEffect(() => {
-    get_refresh();
-    let fourMinutes = 1000 * 60 * 4;
+//   useEffect(() => {
+//     get_refresh();
+//     let fourMinutes = 1000 * 60 * 4;
 
-    let interval = setInterval(() => {
-      if (refresh) {
-        dispatch(update_user());
-      }
-    }, fourMinutes);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line
-  }, [refresh]);
-}
+//     let interval = setInterval(() => {
+//       if (refresh) {
+//         dispatch(update_user());
+//       }
+//     }, fourMinutes);
+//     return () => clearInterval(interval);
+//     // eslint-disable-next-line
+//   }, [refresh]);
+// }
 
-export default UpdateUser;
+// export default UpdateUser;

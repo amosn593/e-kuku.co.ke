@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { axios } from "../inc/axios";
-import { UpdateUser } from "../../utils/UpdateUser";
+import { axiosInstance } from "../inc/axios";
+import BreadCrumb from "../inc/BreadCrumb";
 
 function Sell() {
   document.title = "Sell | E-KUKU";
@@ -18,7 +18,7 @@ function Sell() {
 
   const getcounties = async () => {
     try {
-      const response = await axios.get("/main/getcounty");
+      const response = await axiosInstance.get("/main/getcounty");
       if (response && response.data) {
         setCounties(response.data);
       } else {
@@ -29,7 +29,7 @@ function Sell() {
   const getsubcounties = async (e) => {
     const p = e.target.value;
     try {
-      const res = await axios.get(`/main/getsubcounty/${p}`);
+      const res = await axiosInstance.get(`/main/getsubcounty/${p}`);
       if (res && res.data) {
         setSubcounties(res.data);
       } else {
@@ -39,7 +39,7 @@ function Sell() {
 
   const getcategories = async () => {
     try {
-      const response = await axios.get("/main/getcategory");
+      const response = await axiosInstance.get("/main/getcategory");
       if (response && response.data) {
         setCategories(response.data);
       } else {
@@ -94,7 +94,7 @@ function Sell() {
               },
             };
             try {
-              const res = await axios.post(
+              const res = await axiosInstance.post(
                 "/main/poultrycreate/",
                 formData,
                 config
@@ -128,10 +128,11 @@ function Sell() {
     }
   };
 
-  UpdateUser();
+ 
 
   return (
     <div className="container mt-2 mb-3 pt-2 pb-4">
+      <BreadCrumb title="Post Product" />
       <div className="w-85 mx-auto bg-dark">
         <h5 className="text-center align-center text-white py-4">
           Post Your Product For Free

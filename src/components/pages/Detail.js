@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { axios } from "../inc/axios";
+import { axiosInstance } from "../inc/axios";
 import { useParams } from "react-router-dom";
-import "./pages.css";
-import { UpdateUser } from "../../utils/UpdateUser";
+import BreadCrumb from "../inc/BreadCrumb";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -22,13 +21,13 @@ function Detail() {
 
   const updatePost = async () => {
     try {
-      await axios.post(`/main/poultryview/${id}`);
+      await axiosInstance.post(`/main/poultryview/${id}`);
     } catch (err) {}
   };
 
   const getPost = async () => {
     try {
-      const response = await axios.get(`/main/poultrydetail/${id}`);
+      const response = await axiosInstance.get(`/main/poultrydetail/${id}`);
       if (response && response.data) {
         setPost(response.data);
       }
@@ -42,11 +41,10 @@ function Detail() {
     // eslint-disable-next-line
   }, []);
 
-  UpdateUser();
-
   if (!noPost) {
     return (
       <div className="container my-3 py-3">
+        <BreadCrumb title={post.title} />
         <div className="row mx-0 mt-3">
           <div className="container d-flex">
             <h4 className="my-2 py-2 mx-2">Share:</h4>

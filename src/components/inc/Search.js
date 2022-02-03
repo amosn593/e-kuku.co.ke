@@ -21,7 +21,7 @@ function Search() {
           </h6>
           <form className="form-inline d-flex" onSubmit={post}>
             <div className="form-group search-form">
-              <span class="fa fa-search form-control-feedback"></span>
+              <span className="fa fa-search form-control-feedback"></span>
               <input
                 type="text"
                 name="search-string"

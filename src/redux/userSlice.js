@@ -7,6 +7,7 @@ export const userSlice = createSlice({
     load_error: null,
     access: localStorage.getItem("access"),
     refresh: localStorage.getItem("refresh"),
+    authToken: localStorage.getItem("authToken"),
     login_pending: null,
     login_user_error: "",
     load_user_error: "",
@@ -35,20 +36,23 @@ export const userSlice = createSlice({
       state.refresh = action.payload.refresh;
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
+      localStorage.setItem("authToken", action.payload);
       state.login_pending = false;
       state.isAuthenticated = true;
     },
     loginerror: (state) => {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
+      localStorage.removeItem("authToken");
       state.login_pending = false;
       state.error = true;
       state.isAuthenticated = false;
-      state.login_user_error = "Invalid Login Creditals!!!";
+      state.login_user_error = "Invalid Login Credentials!!!";
     },
     logout: (state) => {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
+      localStorage.removeItem("authToken");
       state.access = null;
       state.refresh = null;
       state.isAuthenticated = false;
@@ -71,6 +75,7 @@ export const userSlice = createSlice({
       state.refresh = action.payload.refresh;
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
+      localStorage.setItem("authToken", action.payload);
     },
     loaduser_error: (state) => {
       state.userinfo = null;
@@ -87,6 +92,7 @@ export const userSlice = createSlice({
       state.refresh = action.payload.refresh;
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
+      localStorage.setItem("authToken", action.payload);
     },
 
     signup_start: (state) => {

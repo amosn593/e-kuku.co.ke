@@ -137,6 +137,15 @@ body {
   font-weight: 500;
 }
 
+.detailed-font {
+  font-weight: bold !important;
+}
+
+.breadCrumb {
+  text-decoration: none;
+  color: #198754;
+}
+
 /* Card body */
 .mycard {
   transition: transform 0.2s !important;
@@ -178,9 +187,11 @@ body {
 }
 
 /* login */
+.auth-right-div {
+  color: #e4edf7;
+}
 .login-div {
-  background-color: #545658;
-  color: #0f0f0f;
+  color: #e4edf7;
   padding-bottom: 60px !important;
   margin-bottom: -50px !important;
 }
@@ -224,4 +235,10 @@ body {
   text-align: center;
   padding-top: 25px;
   color: red;
+}
+
+@media only screen and (max-width: 580px) {
+  .auth-right-div {
+    display: none;
+  }
 }

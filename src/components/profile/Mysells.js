@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { axios } from "../inc/axios";
+import { axiosInstance } from "../inc/axios";
 import Spinner from "../inc/Spinner";
-import UpdateUser from "../../utils/UpdateUser";
+import BreadCrumb from "../inc/BreadCrumb";
 
 function Mysells() {
   const [posts, setPosts] = useState([]);
@@ -22,7 +22,7 @@ function Mysells() {
         },
       };
       try {
-        const response = await axios.get("/main/mypoultry", config);
+        const response = await axiosInstance.get("/main/mypoultry", config);
         if (response && response.data) {
           setPosts(response.data);
           setLoading(false);
@@ -39,8 +39,6 @@ function Mysells() {
     // eslint-disable-next-line
   }, []);
 
-  UpdateUser();
-
   const delete_my_post = async (id) => {
     setDeleting(true);
     if (localStorage.getItem("access")) {
@@ -52,7 +50,7 @@ function Mysells() {
       };
       if (window.confirm("Are sure to delete?")) {
         try {
-          const response = await axios.delete(
+          const response = await axiosInstance.delete(
             `/main/mypoultrydelete/${id}`,
             config
           );
@@ -76,6 +74,7 @@ function Mysells() {
     if (posts.length > 0) {
       return (
         <div className="container">
+          <BreadCrumb title="My Product Posts" />
           <div className="row mx-2 my-2">
             <div className="container my-2 py-2">
               {posts.map((post) => {

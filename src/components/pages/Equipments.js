@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Post from "./Post";
-import { axios } from "../inc/axios";
+import { axiosInstance } from "../inc/axios";
 import Spinner from "../inc/Spinner";
 import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
-import { UpdateUser } from "../../utils/UpdateUser";
+import BreadCrumb from "../inc/BreadCrumb";
 
 function Equipments() {
   document.title = "Poultry Facilities | E-KUKU";
@@ -16,7 +16,7 @@ function Equipments() {
   const getPosts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("/main/poultrystructure");
+      const response = await axiosInstance.get("/main/poultrystructure");
       if (response && response.data) {
         setPosts(response.data);
         setLoading(false);
@@ -32,14 +32,13 @@ function Equipments() {
     // eslint-disable-next-line
   }, []);
 
-  UpdateUser();
-
   if (!loading) {
     if (!noPosts) {
       return (
         <div>
           <Search />
-          <div class="container">
+          <div className="container">
+            <BreadCrumb title="Poultry Facilities" />
             <div className="row my-2">
               {posts.map((post) => {
                 return <Post key={post.id} {...post} />;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { UpdateUser } from "../../utils/UpdateUser";
-import { axios } from "../inc/axios";
+import { axiosInstance } from "../inc/axios";
 import Post from "./Post";
 import Spinner from "../inc/Spinner";
 import Search from "../inc/Search";
 import NoPosts from "../inc/NoPosts";
+import BreadCrumb from "../inc/BreadCrumb";
 
 function SearchResult() {
   document.title = "Search | E-KUKU";
@@ -18,7 +18,7 @@ function SearchResult() {
   const getPosts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`/main/poultrysearch/${query}`);
+      const response = await axiosInstance.get(`/main/poultrysearch/${query}`);
       if (response && response.data) {
         setPosts(response.data);
         setLoading(false);
@@ -34,14 +34,13 @@ function SearchResult() {
     // eslint-disable-next-line
   }, [query]);
 
-  UpdateUser();
-
   if (!loading) {
     if (posts.length > 0) {
       return (
         <div>
           <Search />
-          <div class="container">
+          <div className="container">
+            <BreadCrumb title="Search Results" />
             <div className="row my-2">
               {posts.map((post) => {
                 return <Post key={post.id} {...post} />;

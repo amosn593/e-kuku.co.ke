@@ -11,7 +11,7 @@ import {
   signup,
   signup_error,
 } from "./userSlice";
-import { axios } from "../components/inc/axios";
+import { axiosInstance } from "../components/inc/axios";
 
 export const load_user = () => async (dispatch) => {
   dispatch(loadstart());
@@ -24,7 +24,7 @@ export const load_user = () => async (dispatch) => {
     };
     const body = JSON.stringify({ refresh: localStorage.getItem("refresh") });
     try {
-      const res = await axios.post("/auth/jwt/refresh/", body, config);
+      const res = await axiosInstance.post("/auth/jwt/refresh/", body, config);
 
       if (res.status === 200) {
         dispatch(loaduser(res.data));
@@ -48,7 +48,7 @@ export const login_user = async (body, dispatch, history) => {
   };
 
   try {
-    const res = await axios.post("/auth/jwt/create/", body, config);
+    const res = await axiosInstance.post("/auth/jwt/create/", body, config);
 
     if (res.status === 200) {
       dispatch(login(res.data));
@@ -61,30 +61,6 @@ export const login_user = async (body, dispatch, history) => {
   }
 };
 
-export const update_user = () => async (dispatch) => {
-  if (localStorage.getItem("refresh")) {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-    const body = JSON.stringify({ refresh: localStorage.getItem("refresh") });
-    try {
-      const res = await axios.post("/auth/jwt/refresh/", body, config);
-
-      if (res.status === 200) {
-        dispatch(updateuser(res.data));
-      } else {
-        dispatch(logout());
-      }
-    } catch (err) {
-      dispatch(logout());
-    }
-  } else {
-    dispatch(logout());
-  }
-};
 
 export const signup_user = async (body, dispatch) => {
   dispatch(signup_start());
@@ -95,7 +71,7 @@ export const signup_user = async (body, dispatch) => {
   };
 
   try {
-    const res = await axios.post("/auth/users/", body, config);
+    const res = await axiosInstance.post("/auth/users/", body, config);
     if (res.status === 201) {
       dispatch(signup());
     } else {
