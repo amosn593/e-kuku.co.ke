@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { load_user } from "./redux/Apicalls";
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { load_pending } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,53 +36,52 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <div className="main-content">
-      <Router>
-        <Navbar />
-        <div className="page-content">
-          <Switch>
-            <PrivateRoute component={Home} path="/" exact />
-            <PrivateRoute component={Chick} path="/chicks" exact />
-            <PrivateRoute component={Chicken} path="/chicken" exact />
-            <PrivateRoute component={Egg} path="/eggs" exact />
-            <PrivateRoute component={Feed} path="/feeds-medicine" exact />
-            <PrivateRoute
-              component={Detail}
-              path="/poultry_details/:id"
-              exact
-            />
-            <PrivateRoute component={SearchResult} path="/search" exact />
-            <PrivateRoute
-              component={Equipments}
-              path="/poultry-facilities"
-              exact
-            />
-            <PublicRoute path="/sign-in" exact component={Login} />
-            <PublicRoute path="/sign-up" exact component={Register} />
-            <PrivateRoute component={Sell} path="/sell" exact />
-            <PublicRoute
-              path="/Reset_Password"
-              exact
-              component={Resetpassword}
-            />
-            <PublicRoute
-              path="/Reset_Password_email"
-              exact
-              component={ResetPasswordEmail}
-            />
-            <PrivateRoute component={Mysells} path="/my-sells" exact />
-            <PrivateRoute component={Mpesa} path="/sponsor/:id" exact />
-            <Route path="/terms-and-conditions" exact component={Terms} />
-            <Route path="/privacy-policy" exact component={Privacy} />
-            <Route path="/about-e-kuku" exact component={About} />
-            <Route component={NotFound} />
-          </Switch>
-        </div>
-        <div className="footer">{isAuthenticated && <Footer />}</div>
-      </Router>
-    </div>
-  );
+  if (!load_pending) {
+    return (
+      <div className="main-content">
+        <Router>
+          <Navbar />
+          <div className="page-content">
+            <Switch>
+              <Route component={Home} path="/" exact />
+              <Route component={Chick} path="/chicks" exact />
+              <Route component={Chicken} path="/chicken" exact />
+              <Route component={Egg} path="/eggs" exact />
+              <Route component={Feed} path="/feeds-medicine" exact />
+              <Route component={Detail} path="/poultry_details/:id" exact />
+              <Route component={SearchResult} path="/search" exact />
+              <Route component={Equipments} path="/poultry-facilities" exact />
+              <PublicRoute path="/sign-in" exact component={Login} />
+              <PublicRoute path="/sign-up" exact component={Register} />
+              <PrivateRoute component={Sell} path="/sell" exact />
+              <PrivateRoute component={Mysells} path="/my-sells" exact />
+              <PrivateRoute component={Mpesa} path="/sponsor/:id" exact />
+              <PublicRoute
+                path="/Reset_Password"
+                exact
+                component={Resetpassword}
+              />
+              <PublicRoute
+                path="/Reset_Password_email"
+                exact
+                component={ResetPasswordEmail}
+              />
+              <Route path="/terms-and-conditions" exact component={Terms} />
+              <Route path="/privacy-policy" exact component={Privacy} />
+              <Route path="/about-e-kuku" exact component={About} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+          <div className="footer">
+            {" "}
+            <Footer />{" "}
+          </div>
+        </Router>
+      </div>
+    );
+  } else {
+    return <div className="mt-4 pt-4 text-center">Refreshing Website...</div>;
+  }
 }
 
 export default App;

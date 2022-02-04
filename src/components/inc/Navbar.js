@@ -8,12 +8,13 @@ function Navbar() {
   const { isAuthenticated } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+
   const history = useHistory();
 
   const logoutuser = (e) => {
     e.preventDefault();
     dispatch(logout());
-    history.push("/sign-in");
+    history.push("/");
   };
 
   return (
@@ -39,82 +40,83 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            {isAuthenticated ? (
-              <>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/eggs"
-                  >
-                    Eggs
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/chicks"
-                  >
-                    Chicks
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/chicken"
-                  >
-                    Chicken
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/feeds-medicine"
-                  >
-                    Feeds & Medicines
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/poultry-facilities"
-                  >
-                    Poultry Facilities
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-warning btn-sell text-white  rounded-pill text-center mx-1"
-                    to="/sell"
-                  >
-                    SELL
-                  </Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"
-                    href="links"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    My Account
-                  </a>
-                  <ul
-                    className="dropdown-menu dropdown-menu-lg-end"
-                    aria-labelledby="navbarDropdown"
-                  >
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/"
+              >
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/eggs"
+              >
+                Eggs
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/chicks"
+              >
+                Chicks
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/chicken"
+              >
+                Chicken
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/feeds-medicine"
+              >
+                Feeds & Medicines
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-success text-white rounded-pill text-center"
+                to="/poultry-facilities"
+              >
+                Poultry Facilities
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link btn-warning btn-sell text-white  rounded-pill text-center mx-1"
+                to="/sell"
+              >
+                SELL
+              </Link>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link text-white rounded-pill text-center btn-success dropdown-toggle"
+                href="links"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i className="fa fa-user px-1" aria-hidden="true"></i> Account
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-lg-end"
+                aria-labelledby="navbarDropdown"
+              >
+                {isAuthenticated ? (
+                  <>
                     <li>
                       <Link className="dropdown-item" to="/my-sells">
-                        My Adverts
+                        <i className="fa fa-th px-1" aria-hidden="true"></i> My
+                        Adverts
                       </Link>
                     </li>
                     <li></li>
@@ -122,33 +124,33 @@ function Navbar() {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <button className="dropdown-item" onClick={logoutuser}>
+                      <button
+                        className="dropdown-item text-danger"
+                        onClick={logoutuser}
+                      >
                         Logout
                       </button>
                     </li>
-                  </ul>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/sign-in"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link btn-success text-white rounded-pill text-center"
-                    to="/sign-up"
-                  >
-                    Register
-                  </Link>
-                </li>
-              </>
-            )}
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link className="dropdown-item" to="/sign-in">
+                        <p className="btn btn-danger w-100"> Log In</p>
+                      </Link>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/sign-up">
+                        <p className="btn btn-secondary w-100">Register</p>
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </li>
           </ul>
         </div>
       </div>

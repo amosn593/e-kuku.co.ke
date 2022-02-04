@@ -6,30 +6,35 @@ import NoPosts from "../inc/NoPosts";
 import Search from "../inc/Search";
 
 function Home() {
-
-  document.title = "E-KUKU|Home";
+  document.title = "E-KUKU | Home";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getPosts = async () => {
-    setLoading(true);
-    try {
-      const response = await axiosInstance.get("/main/latestpoultry");
-      if (response && response.data) {
-        setPosts(response.data);
-        setLoading(false);
-      }
-    } catch (err) {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
-    getPosts();
+    // clean up controller
+    let isSubscribed = false;
     window.scroll(0, 0);
+    (async function () {
+      setLoading(true);
+      try {
+        const response = await axiosInstance.get("/main/latestpoultry");
+        if (response && response.data) {
+          if (!isSubscribed) {
+            setPosts(response.data);
+            setLoading(false);
+          }
+        }
+      } catch (err) {
+        if (!isSubscribed) {
+          setLoading(false);
+        }
+      }
+    })();
+    // cancel subscription to useEffect
+    return () => (isSubscribed = true);
     // eslint-disable-next-line
   }, []);
-
 
   if (!loading) {
     if (posts.length > 0) {

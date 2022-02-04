@@ -4,7 +4,7 @@ import { axiosInstance } from "../inc/axios";
 import BreadCrumb from "../inc/BreadCrumb";
 
 function Sell() {
-  document.title = "Sell | E-KUKU";
+  document.title = "E-KUKU | Sell";
   const history = useHistory();
 
   const [posting, setPosting] = useState(false);
@@ -101,7 +101,8 @@ function Sell() {
               );
               if (res.status === 201) {
                 setPosting(false);
-                history.push(`sponsor/${res.data.id}`);
+                alert("Advert Posted Successfully!");
+                history.push("/");
               } else if (res.status === 404) {
                 setPosting(false);
                 setError(true);
@@ -127,8 +128,6 @@ function Sell() {
       }
     }
   };
-
- 
 
   return (
     <div className="container mt-2 mb-3 pt-2 pb-4">

@@ -7,28 +7,34 @@ import Search from "../inc/Search";
 import BreadCrumb from "../inc/BreadCrumb";
 
 function Equipments() {
-  document.title = "Poultry Facilities | E-KUKU";
+  document.title = "E-KUKU | Poultry Facilities";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const noPosts = !posts || (posts && posts.length === 0);
 
-  const getPosts = async () => {
-    setLoading(true);
-    try {
-      const response = await axiosInstance.get("/main/poultrystructure");
-      if (response && response.data) {
-        setPosts(response.data);
-        setLoading(false);
-      }
-    } catch (err) {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    getPosts();
+    // clean up controller
+    let isSubscribed = false;
     window.scroll(0, 0);
+    (async function () {
+      setLoading(true);
+      try {
+        const response = await axiosInstance.get("/main/poultrystructure");
+        if (response && response.data) {
+          if (!isSubscribed) {
+            setPosts(response.data);
+            setLoading(false);
+          }
+        }
+      } catch (err) {
+        if (!isSubscribed) {
+          setLoading(false);
+        }
+      }
+    })();
+    // cancel subscription to useEffect
+    return () => (isSubscribed = true);
     // eslint-disable-next-line
   }, []);
 

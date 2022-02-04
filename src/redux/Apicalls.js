@@ -31,9 +31,11 @@ export const load_user = () => async (dispatch) => {
         dispatch(loaduser_error());
       }
     } catch (err) {
+      dispatch(loaduser_error());
       dispatch(logout());
     }
   } else {
+    dispatch(loaduser_error());
     dispatch(logout());
   }
 };

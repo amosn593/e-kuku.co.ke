@@ -15,22 +15,30 @@ function SearchResult() {
   const params = new URLSearchParams(search);
   const query = params.get("q");
 
-  const getPosts = async () => {
-    setLoading(true);
-    try {
-      const response = await axiosInstance.get(`/main/poultrysearch/${query}`);
-      if (response && response.data) {
-        setPosts(response.data);
-        setLoading(false);
-      }
-    } catch (err) {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    getPosts();
+    // clean up controller
+    let isSubscribed = false;
     window.scroll(0, 0);
+    (async function () {
+      setLoading(true);
+      try {
+        const response = await axiosInstance.get(
+          `/main/poultrysearch/${query}`
+        );
+        if (response && response.data) {
+          if (!isSubscribed) {
+            setPosts(response.data);
+            setLoading(false);
+          }
+        }
+      } catch (err) {
+        if (!isSubscribed) {
+          setLoading(false);
+        }
+      }
+    })();
+    // cancel subscription to useEffect
+    return () => (isSubscribed = true);
     // eslint-disable-next-line
   }, [query]);
 

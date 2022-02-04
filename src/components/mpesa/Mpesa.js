@@ -43,7 +43,7 @@ function Mpesa() {
     // if (localStorage.getItem("access")) {
     //   if (plan) {
     //     try {
-    //       const res = await axios.post("/mpesa/lipa/", body, config);
+    //       const res = await axiosInstance.post("/mpesa/lipa/", body, config);
     //       console.log(res);
     //       if (res.status === 200) {
     //         setPaying(false);
